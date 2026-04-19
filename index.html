@@ -1,0 +1,233 @@
+<!--FORNO NERO - Ultra Modern Redesign-->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Forno Nero — Pizzeria d'Autore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-index.css">
+</head>
+<body>
+
+<div id="cur"></div>
+
+<!-- Mobile overlay menu -->
+<div class="mob-menu" id="mobMenu">
+  <div class="mob-line"></div>
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a href="menu.html" onclick="closeMob()">Menu</a>
+  <a href="prenotazioni.html" onclick="closeMob()">Prenota</a>
+  <a href="#contatti" onclick="closeMob()">Contatti</a>
+  <div class="mob-line"></div>
+</div>
+
+<!-- Nav -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">
+    <span class="nav-brand-dot"></span>
+    FORNO NERO
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="prenotazioni.html">Prenota</a>
+    <a href="#contatti">Contatti</a>
+  </div>
+  <div class="hamburger" id="ham" onclick="toggleMob()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-media"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <h1 class="hero-h1">
+      <span class="h1-line"><span class="h1-inner">Dove il fuoco</span></span>
+      <span class="h1-line"><span class="h1-inner"><em>incontra</em></span></span>
+      <span class="h1-line"><span class="h1-inner">l'anima.</span></span>
+    </h1>
+    <p class="hero-sub">Impasto a 48 ore, forno a legna, ingredienti scelti uno per uno. Non facciamo pizza — raccontiamo storie.</p>
+    <div class="hero-cta-row">
+      <a href="menu.html" class="btn-primary">Sfoglia il menu</a>
+      <a href="prenotazioni.html" class="btn-secondary">Prenota un tavolo</a>
+    </div>
+  </div>
+  <div class="hero-counter">
+    <div class="hero-counter-item">
+      <div class="hero-counter-num">48h</div>
+      <div class="hero-counter-label">Maturazione</div>
+    </div>
+    <div class="hero-counter-divider"></div>
+    <div class="hero-counter-item">
+      <div class="hero-counter-num">450°</div>
+      <div class="hero-counter-label">Forno a legna</div>
+    </div>
+    <div class="hero-counter-divider"></div>
+    <div class="hero-counter-item">
+      <div class="hero-counter-num">1945</div>
+      <div class="hero-counter-label">Fondazione</div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <div class="marquee-item">Forno a Legna</div><div class="marquee-item">Impasto 48h</div><div class="marquee-item">Ingredienti Selezionati</div><div class="marquee-item">Casteddu Dal 1945</div><div class="marquee-item">Pizza d'Autore</div><div class="marquee-item">Tradizione Viva</div><div class="marquee-item">Forno a Legna</div><div class="marquee-item">Impasto 48h</div><div class="marquee-item">Ingredienti Selezionati</div><div class="marquee-item">Casteddu Dal 1945</div><div class="marquee-item">Pizza d'Autore</div><div class="marquee-item">Tradizione Viva</div>
+  </div>
+</div>
+
+<!-- Storia -->
+<section class="parallax-section" id="storia">
+  <div class="parallax-img-col">
+    <div class="parallax-img" id="pImg1" style="background-image:url('margherita.webp');"></div>
+  </div>
+  <div class="parallax-text-col" data-word="FUOCO">
+    <div class="parallax-text">
+      <h2 class="section-h2 reveal d2">Dal 1945,<br>l'arte del <em>fuoco</em></h2>
+      <p class="section-body reveal d3">Tutto nasce da un forno costruito a mano con pietre vulcaniche del Vesuvio. Tre generazioni di pizzaioli che hanno preservato un'unica certezza: la qualità non si scende a compromessi. Ogni impasto è lavorato lentamente, ogni ingrediente scelto con ossessione maniacale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Stats strip -->
+<div class="stats-strip">
+  <div class="stat-item reveal d1">
+    <div class="stat-number">48h</div>
+    <div class="stat-label">di maturazione dell'impasto</div>
+  </div>
+  <div class="stat-sep"></div>
+  <div class="stat-item reveal d2">
+    <div class="stat-number">450°</div>
+    <div class="stat-label">temperatura del forno a legna</div>
+  </div>
+  <div class="stat-sep"></div>
+  <div class="stat-item reveal d3">
+    <div class="stat-number">3</div>
+    <div class="stat-label">generazioni di pizzaioli</div>
+  </div>
+  <div class="stat-sep"></div>
+  <div class="stat-item reveal d4">
+    <div class="stat-number">80+</div>
+    <div class="stat-label">pizze nel nostro menu</div>
+  </div>
+</div>
+
+<div class="ornament-divider">
+  <span class="ornament-glyph">✦</span>
+</div>
+
+<!-- Preview menu -->
+<section class="preview-section">
+  <div class="preview-head">
+    <h2 class="preview-title reveal d1">Assaggia <em>l'eccellenza</em></h2>
+    <p class="preview-sub reveal d2">Tre pizze che raccontano la nostra filosofia. Ma il menu ha molto, molto di più.</p>
+  </div>
+  <div class="preview-grid">
+    <div class="preview-card reveal d1">
+      <div class="preview-card-img">
+        <img src="pizza_basilico.jpg" alt="Margherita">
+        <div class="preview-card-overlay"></div>
+        <div class="preview-card-num">01</div>
+      </div>
+      <div class="preview-card-body">
+        <div class="preview-card-tag">Classica</div>
+        <div class="preview-card-name">Margherita</div>
+        <div class="preview-card-desc">San Marzano, fiordilatte di Agerola, basilico fresco, olio EVO</div>
+        <div class="preview-card-price">€ 6,00</div>
+      </div>
+    </div>
+    <div class="preview-card reveal d2">
+      <div class="preview-card-img">
+        <img src="borghese.jpg" alt="Borghese">
+        <div class="preview-card-overlay"></div>
+        <div class="preview-card-num">02</div>
+      </div>
+      <div class="preview-card-body">
+        <div class="preview-card-tag">Specialità</div>
+        <div class="preview-card-name">Borghese</div>
+        <div class="preview-card-desc">Fiordilatte, prosciutto crudo 24 mesi, rucola, grana padano, noci e un po di palle sudate</div>
+        <div class="preview-card-price">€ 10,00</div>
+      </div>
+    </div>
+    <div class="preview-card reveal d3">
+      <div class="preview-card-img">
+        <img src="bufala.jpg" alt="Bufala">
+        <div class="preview-card-overlay"></div>
+        <div class="preview-card-num">03</div>
+      </div>
+      <div class="preview-card-body">
+        <div class="preview-card-tag">Firma</div>
+        <div class="preview-card-name">Bufala</div>
+        <div class="preview-card-desc">Datterino bocchino, mozzarella di bufala DOPPATA, basilico, olio aromatico</div>
+        <div class="preview-card-price">€ 13,00</div>
+      </div>
+    </div>
+  </div>
+  <div class="preview-cta reveal">
+    <a href="menu.html" class="btn-primary">Vedi tutto il menu →</a>
+  </div>
+</section>
+
+<div class="ornament-divider">
+  <span class="ornament-glyph">✦</span>
+</div>
+
+<!-- Parallax forno -->
+<section class="parallax-section parallax-reverse">
+  <div class="parallax-text-col" data-word="LEGNA" style="background: var(--graphite);">
+    <div class="parallax-text">
+      <h2 class="section-h2 reveal d2">Il forno che <em>non dorme</em><br>mai</h2>
+      <p class="section-body reveal d3">Il nostro forno a legna accende alle 6 di mattina e resta caldo fino all'ultima pizza della serata. A 450 gradi, ogni pizza cuoce in 90 secondi — abbastanza da creare il cornicione perfetto, abbastanza da conservare ogni sapore.</p>
+      <a href="prenotazioni.html" class="btn-primary reveal d4" style="margin-top:40px; display:inline-block;">Prenota la tua serata →</a>
+    </div>
+  </div>
+  <div class="parallax-img-col">
+    <div class="parallax-img" id="pImg2" style="background-image:url('forno.jpg'); background-position: center 30%;"></div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <div class="marquee-item">Forno a Legna</div><div class="marquee-item">Impasto 48h</div><div class="marquee-item">Ingredienti Selezionati</div><div class="marquee-item">Casteddu Dal 1945</div><div class="marquee-item">Pizza d'Autore</div><div class="marquee-item">Tradizione Viva</div><div class="marquee-item">Forno a Legna</div><div class="marquee-item">Impasto 48h</div><div class="marquee-item">Ingredienti Selezionati</div><div class="marquee-item">Casteddu Dal 1945</div><div class="marquee-item">Pizza d'Autore</div><div class="marquee-item">Tradizione Viva</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer id="contatti">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">FORNO <span>NERO</span></div>
+      <p class="footer-sub">Pizzeria d'autore nel cuore di Casteddu. Ogni pizza racconta una storia di passione, tecnica e ingredienti eccellenti. Dal 1945.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Naviga</h4>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="prenotazioni.html">Prenota</a>
+      <a href="#contatti">Contatti</a>
+    </div>
+    <div class="footer-col">
+      <h4>Dove siamo</h4>
+      <a href="#">Casteddu, Sardegna</a>
+      <a href="#">Pranzo Lun–Sab&nbsp;&nbsp;12:30–15:00</a>
+      <a href="#">Cena – Lun–Sab&nbsp;&nbsp;19:30–23:30</a>
+      <a href="#">+39 123 456 7891</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Forno Nero · Made by Mockly.</span>
+    <span class="footer-ornament">✦</span>
+    <span>Pizzeria · Casteddu</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
