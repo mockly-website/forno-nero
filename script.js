@@ -117,10 +117,14 @@ document.body.append(transOverlay);
 
 // Fade in on page load
 window.addEventListener('load', () => {
-  document.body.style.opacity = '0';
-  document.body.style.transition = 'opacity .5s ease';
   requestAnimationFrame(() => {
+    // Fade in del body (già presente nel tuo codice)
+    document.body.style.transition = 'opacity .5s ease';
     document.body.style.opacity = '1';
+    
+    document.querySelectorAll('.marquee-track').forEach(track => {
+      track.style.animationPlayState = 'running';
+    });
   });
 });
 
