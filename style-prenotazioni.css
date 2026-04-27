@@ -1,8 +1,8 @@
-/* FORNO NERO — style-prenotazioni.css — Ultra Modern */
+/* FORNO NERO */
 
 /* BOOKING HERO */
 .booking-hero {
-  position: relative; height: 50vh; min-height: 380px;
+  position: relative; height: 60vh; min-height: 420px;
   overflow: hidden; display: flex; align-items: flex-end;
 }
 .booking-hero-bg {
@@ -19,7 +19,8 @@
   background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,.5) 40%, transparent 80%);
 }
 .booking-hero-content {
-  position: relative; z-index: 2; padding: 60px 10vw 8vh; max-width: 700px;
+  position: relative; z-index: 2; padding: 0 10vw 8vh; max-width: 700px;
+  width: 100%;
 }
 .booking-hero-eyebrow {
   font-family: var(--font-body); font-size: .65rem;
