@@ -70,10 +70,6 @@
 
 .h1-line {
   display: block;
-  /* ✅ FIX 1: era overflow:hidden che tagliava le lettere alte di Bebas Neue.
-     Usiamo clip invece di overflow, oppure aggiungiamo padding compensativo.
-     La soluzione più pulita: padding-bottom + margin-bottom negativo per non
-     alterare il layout, ma che permette alle discendenti/ascendenti di respirare. */
   overflow: hidden;
   padding-bottom: 0.12em;
   margin-bottom: -0.12em;
@@ -84,7 +80,6 @@
   transform: translateY(110%);
   animation: slideUp 1s cubic-bezier(.16,1,.3,1) forwards;
   white-space: normal;
-  /* ✅ FIX 1 (complementare): padding-top per non tagliare le parti alte */
   padding-top: 0.05em;
 }
 
@@ -106,14 +101,6 @@
   opacity: 0; animation: fadeUp .8s ease forwards 1.4s;
 }
 
-/* ✅ FIX 2: Hero counter bar
-   Problema: opacity:0 + animation fadeUp non partiva su alcuni browser
-   quando la pagina veniva caricata con body opacity:0 (vedi <style> in head).
-   Il body parte invisibile e fa un fade-in via JS. Se lo script è lento,
-   le animazioni CSS con delay potrebbero già essere scadute.
-   Soluzione: aggiungiamo animation-fill-mode: both (già presente),
-   e usiamo animation-play-state per forzare la riproduzione,
-   più un fallback con animation-delay più corto. */
 .hero-counter {
   position: relative;
   z-index: 2;
@@ -124,8 +111,6 @@
   padding: 0 10vw 6vh;
   margin-top: 60px;
   opacity: 0;
-  /* ✅ FIX 2: ridotto delay da 1.6s a 1s e aggiunto both per garantire
-     che l'elemento rimanga visibile anche se l'animazione è già completata */
   animation: fadeUp .8s ease forwards 1s;
   animation-fill-mode: both;
 }
@@ -141,7 +126,6 @@
   font-size: clamp(2rem, 3.5vw, 3.5rem);
   color: var(--signal); line-height: 1; letter-spacing: .05em;
   margin-bottom: 6px;
-  /* ✅ FIX 2 (complementare): garantisce visibilità anche senza animazione */
   will-change: transform;
 }
 
@@ -149,7 +133,6 @@
   font-family: var(--font-body);
   font-size: .62rem; letter-spacing: .3em; text-transform: uppercase;
   color: var(--ghost); font-weight: 500;
-  /* ✅ FIX 2: white-space:nowrap evita che le label si spezzino su mobile */
   white-space: nowrap;
 }
 
@@ -291,7 +274,6 @@
   .hero-cta-row { flex-direction: column; align-items: flex-start; gap: 12px; }
   .hero-counter { padding: 0 6vw 6vh; gap: 0; }
   .hero-counter-item { padding: 20px 0; }
-  /* ✅ FIX 2 mobile: le label non si spezzano su schermi stretti */
   .hero-counter-label { font-size: .55rem; letter-spacing: .2em; }
   .hero-counter-divider { margin: 0 16px; }
   .stats-strip { padding: 48px 6vw; }
