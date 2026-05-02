@@ -1,4 +1,4 @@
-/* FORNO NERO — style-menu.css — Ultra Modern */
+/* FORNO NERO — style-menu.css */
 
 /* HERO */
 .menu-hero {
@@ -47,7 +47,7 @@
   opacity: 0; animation: fadeUp .8s ease forwards 0.9s;
 }
 
-/* TABS BAR */
+/* BAR */
 .menu-tabs-bar {
   position: sticky; top: 62px; z-index: 400;
   background: rgba(10,10,10,.98); backdrop-filter: blur(30px);
@@ -78,7 +78,7 @@
 .menu-tab.active::after { transform: scaleX(1); }
 .menu-tab:hover { color: rgba(232,184,109,.7); }
 
-/* MAIN CONTENT */
+/* CONTENT */
 .menu-main {
   max-width: 1300px; margin: 0 auto;
   padding: 80px 8vw 120px;
@@ -86,7 +86,7 @@
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
-/* FEATURED ROW */
+/* ROW */
 .menu-featured-row {
   display: grid; grid-template-columns: 1.3fr 1fr;
   gap: 2px; margin-bottom: 60px;
