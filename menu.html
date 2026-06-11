@@ -3,17 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Menu — Forno Nero Pizzeria</title>
+  <title>Menu — Forno Nero Pizzeria d'Autore Cagliari</title>
+  <meta name="description" content="Scopri il menu di Forno Nero: pizze classiche e specialità artigianali con impasto 48h e forno a legna. Da oltre 30 pizze.">
+  <meta property="og:title" content="Menu — Forno Nero Pizzeria d'Autore">
+  <meta property="og:description" content="Pizze classiche e specialità artigianali. Impasto 48h, forno a legna a 450°C.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fornonero.it/menu">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>🔥</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500&family=Italiana&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style-menu.css">
+  <style>
+    :focus-visible {
+      outline: 2px solid var(--signal);
+      outline-offset: 2px;
+    }
+  </style>
 </head>
 <body>
 
 <div id="cur"></div>
 
-<div class="mob-menu" id="mobMenu">
+<div class="mob-menu" id="mobMenu" role="dialog" aria-label="Menu di navigazione">
   <div class="mob-line"></div>
   <a href="index.html" onclick="closeMob()">Home</a>
   <a href="menu.html" onclick="closeMob()">Menu</a>
@@ -22,26 +36,25 @@
   <div class="mob-line"></div>
 </div>
 
-<nav id="nav">
-  <a href="index.html" class="nav-brand">
-    <span class="nav-brand-dot"></span>
+<nav id="nav" aria-label="Navigazione principale">
+  <a href="index.html" class="nav-brand" aria-label="Forno Nero - Home">
+    <span class="nav-brand-dot" aria-hidden="true"></span>
     FORNO NERO
   </a>
   <div class="nav-links">
     <a href="index.html">Home</a>
-    <a href="menu.html" class="active">Menu</a>
+    <a href="menu.html" class="active" aria-current="page">Menu</a>
     <a href="prenotazioni.html">Prenota</a>
     <a href="index.html#contatti">Contatti</a>
   </div>
-  <div class="hamburger" id="ham" onclick="toggleMob()">
+  <button class="hamburger" id="ham" onclick="toggleMob()" aria-label="Apri menu" aria-expanded="false">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
-<!-- Hero Menu -->
 <section class="menu-hero">
-  <div class="menu-hero-bg"></div>
-  <div class="menu-hero-vignette"></div>
+  <div class="menu-hero-bg" role="img" aria-label="Pizza Margherita"></div>
+  <div class="menu-hero-vignette" aria-hidden="true"></div>
   <div class="menu-hero-content">
     <div class="menu-hero-eyebrow">Le nostre creazioni · Forno Nero</div>
     <h1 class="menu-hero-h1">Il <em>Menu</em></h1>
@@ -49,28 +62,24 @@
   </div>
 </section>
 
-<!-- Tab Navigation -->
 <div class="menu-tabs-bar" id="menuTabsBar">
-  <div class="menu-tabs-inner">
-    <button class="menu-tab active" data-tab="rosse" onclick="switchTab('rosse', this)">
-      🍅 Pizze Rosse
+  <div class="menu-tabs-inner" role="tablist" aria-label="Categorie menu">
+    <button class="menu-tab active" data-tab="rosse" onclick="switchTab('rosse', this)" role="tab" aria-selected="true" aria-controls="tab-rosse" id="tab-btn-rosse">
+      Pizze Rosse
     </button>
-    <button class="menu-tab" data-tab="specialita" onclick="switchTab('specialita', this)">
-      ✦ Specialità
+    <button class="menu-tab" data-tab="specialita" onclick="switchTab('specialita', this)" role="tab" aria-selected="false" aria-controls="tab-specialita" id="tab-btn-specialita">
+      Specialità
     </button>
   </div>
 </div>
 
-<!-- Main Menu Content -->
 <main class="menu-main">
 
-  <!-- PIZZE ROSSE TAB -->
-  <div class="tab-content active" id="tab-rosse">
+  <div class="tab-content active" id="tab-rosse" role="tabpanel" aria-labelledby="tab-btn-rosse">
     
-    <!-- Featured -->
     <div class="menu-featured-row reveal">
       <div class="menu-feat-img">
-        <img src="pizza_basilico.jpg" alt="Margherita">
+        <img src="pizza_basilico.jpg" alt="Pizza Margherita con basilico fresco">
       </div>
       <div class="menu-feat-info">
         <div class="feat-tag">La Classica · N°01</div>
@@ -83,7 +92,6 @@
       </div>
     </div>
 
-    <!-- Grid pizze rosse -->
     <div class="pizza-grid">
       <div class="pizza-row reveal d1">
         <div class="pizza-info">
@@ -382,17 +390,16 @@
     </div>
   </div>
 
-  <!-- SPECIALITÀ TAB -->
-  <div class="tab-content" id="tab-specialita">
+  <div class="tab-content" id="tab-specialita" role="tabpanel" aria-labelledby="tab-btn-specialita">
     <div class="specialita-intro reveal">
       <p>Le nostre quattro creazioni di punta — pizze che vanno oltre la tradizione, raccontando il carattere di Forno Nero.</p>
     </div>
     <div class="specialita-grid">
-      <div class="spec-card reveal d1">
+      <article class="spec-card reveal d1">
         <div class="spec-card-img">
-          <img src="borghese.jpg" alt="Borghese">
-          <div class="spec-img-overlay"></div>
-          <div class="spec-card-number">01</div>
+          <img src="borghese.jpg" alt="Pizza Borghese con prosciutto crudo e rucola" loading="lazy">
+          <div class="spec-img-overlay" aria-hidden="true"></div>
+          <div class="spec-card-number" aria-hidden="true">01</div>
         </div>
         <div class="spec-card-body">
           <div class="spec-card-tag">Specialità della Casa</div>
@@ -400,12 +407,12 @@
           <div class="spec-card-desc">Fiordilatte, prosciutto crudo 24 mesi, rucola, grana padano, noci tostate. Una pizza che profuma di eleganza.</div>
           <div class="spec-card-price">€ 14,00</div>
         </div>
-      </div>
-      <div class="spec-card reveal d2">
+      </article>
+      <article class="spec-card reveal d2">
         <div class="spec-card-img">
-          <img src="bufala.jpg" alt="Bufala">
-          <div class="spec-img-overlay"></div>
-          <div class="spec-card-number">02</div>
+          <img src="bufala.jpg" alt="Pizza Bufala con mozzarella DOP" loading="lazy">
+          <div class="spec-img-overlay" aria-hidden="true"></div>
+          <div class="spec-card-number" aria-hidden="true">02</div>
         </div>
         <div class="spec-card-body">
           <div class="spec-card-tag">Specialità della Casa</div>
@@ -413,12 +420,12 @@
           <div class="spec-card-desc">Pomodoro datterino, mozzarella di bufala DOP, basilico fresco, olio aromatico a crudo. La tradizione campana.</div>
           <div class="spec-card-price">€ 13,00</div>
         </div>
-      </div>
-      <div class="spec-card reveal d3">
+      </article>
+      <article class="spec-card reveal d3">
         <div class="spec-card-img spec-placeholder">
-          <div class="spec-placeholder-bg">🌿</div>
-          <div class="spec-img-overlay"></div>
-          <div class="spec-card-number">03</div>
+          <div class="spec-placeholder-bg" aria-label="Bosco">🌿</div>
+          <div class="spec-img-overlay" aria-hidden="true"></div>
+          <div class="spec-card-number" aria-hidden="true">03</div>
         </div>
         <div class="spec-card-body">
           <div class="spec-card-tag">Specialità della Casa</div>
@@ -426,12 +433,12 @@
           <div class="spec-card-desc">Base bianca, funghi porcini, tartufo nero, mozzarella, timo fresco. Un viaggio nel sottobosco sardo.</div>
           <div class="spec-card-price">€ 16,00</div>
         </div>
-      </div>
-      <div class="spec-card reveal d4">
+      </article>
+      <article class="spec-card reveal d4">
         <div class="spec-card-img">
-          <img src="forno.jpg" alt="Forno Nero">
-          <div class="spec-img-overlay"></div>
-          <div class="spec-card-number">04</div>
+          <img src="forno.jpg" alt="Forno a legna Forno Nero" loading="lazy">
+          <div class="spec-img-overlay" aria-hidden="true"></div>
+          <div class="spec-card-number" aria-hidden="true">04</div>
         </div>
         <div class="spec-card-body">
           <div class="spec-card-tag">La firma della casa</div>
@@ -439,16 +446,14 @@
           <div class="spec-card-desc">Burrata fresca, salsiccia artigianale, miele di castagno, noci tostate. La nostra firma, la nostra identità.</div>
           <div class="spec-card-price">€ 18,00</div>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 
-  <!-- Allergeni -->
   <div class="menu-allergeni reveal">
     <strong>Allergeni:</strong> 1) Farina di grano tenero &nbsp;·&nbsp; 2) Crostacei &nbsp;·&nbsp; 4) Pesce &nbsp;·&nbsp; 7) Formaggi e mozzarella &nbsp;·&nbsp; 14) Molluschi
   </div>
 
-  <!-- CTA Prenotazione -->
   <div class="menu-booking-cta reveal">
     <div class="mbcta-text">
       <div class="section-label" style="justify-content:center; margin-bottom:16px;">Hai scelto?</div>
@@ -460,12 +465,11 @@
 
 </main>
 
-<!-- Footer -->
 <footer id="contatti">
   <div class="footer-grid">
     <div>
       <div class="footer-brand">FORNO <span>NERO</span></div>
-      <p class="footer-sub">Pizzeria d'autore nel cuore di Casteddu. Ogni pizza racconta una storia di passione, tecnica e ingredienti eccellenti. Dal 1945.</p>
+      <p class="footer-sub">Pizzeria d'autore nel cuore di Cagliari. Ogni pizza racconta una storia di passione, tecnica e ingredienti eccellenti. Dal 1945.</p>
     </div>
     <div class="footer-col">
       <h4>Naviga</h4>
@@ -476,29 +480,30 @@
     </div>
     <div class="footer-col">
       <h4>Dove siamo</h4>
-      <a href="#">Casteddu, Sardegna</a>
-      <a href="#">Lun–Sab&nbsp;&nbsp;12:30–15:00</a>
-      <a href="#">Lun–Sab&nbsp;&nbsp;19:30–23:30</a>
-      <a href="#">+39 123 456 7891</a>
+      <a href="https://maps.app.goo.gl/SE37KUVxoLeGLsXS6" target="_blank" rel="noopener">Cagliari, Sardegna</a>
+      <a href="#">Pranzo Lun–Sab&nbsp;&nbsp;12:30–15:00</a>
+      <a href="#">Cena Lun–Sab&nbsp;&nbsp;19:30–23:30</a>
+      <a href="tel:+391234567891">+39 123 456 7891</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Forno Nero · Made by Noah and Adri</span>
-    <span class="footer-ornament">✦</span>
-    <span>Pizzeria · Casteddu</span>
+    <span>© 2026 Forno Nero · Pizzeria d'Autore</span>
+    <span class="footer-ornament" aria-hidden="true">✦</span>
+    <span>Cagliari · Sardegna</span>
   </div>
 </footer>
 
 <script src="script.js"></script>
 <script>
 function switchTab(tabId, btn) {
-  // Deactivate all
-  document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.menu-tab').forEach(t => {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected', 'false');
+  });
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-  // Activate selected
   btn.classList.add('active');
+  btn.setAttribute('aria-selected', 'true');
   document.getElementById('tab-' + tabId).classList.add('active');
-  // Re-trigger reveals
   setTimeout(() => {
     document.querySelectorAll('#tab-' + tabId + ' .reveal').forEach(el => {
       el.classList.remove('visible');

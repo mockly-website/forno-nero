@@ -3,17 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Prenota — Forno Nero Pizzeria</title>
+  <title>Prenota — Forno Nero Pizzeria d'Autore Cagliari</title>
+  <meta name="description" content="Prenota un tavolo al Forno Nero. Cena e pranzo a Cagliari, impasto 48h, forno a legna. Posti limitati per garantire la qualità.">
+  <meta property="og:title" content="Prenota — Forno Nero Pizzeria d'Autore">
+  <meta property="og:description" content="Prenota il tuo tavolo al Forno Nero. Cagliari, dal 1945.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fornonero.it/prenota">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>🔥</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500&family=Italiana&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style-prenotazioni.css">
+  <style>
+    :focus-visible {
+      outline: 2px solid var(--signal);
+      outline-offset: 2px;
+    }
+  </style>
 </head>
 <body>
 
 <div id="cur"></div>
 
-<div class="mob-menu" id="mobMenu">
+<div class="mob-menu" id="mobMenu" role="dialog" aria-label="Menu di navigazione">
   <div class="mob-line"></div>
   <a href="index.html" onclick="closeMob()">Home</a>
   <a href="menu.html" onclick="closeMob()">Menu</a>
@@ -22,179 +36,173 @@
   <div class="mob-line"></div>
 </div>
 
-<nav id="nav">
-  <a href="index.html" class="nav-brand">
-    <span class="nav-brand-dot"></span>
+<nav id="nav" aria-label="Navigazione principale">
+  <a href="index.html" class="nav-brand" aria-label="Forno Nero - Home">
+    <span class="nav-brand-dot" aria-hidden="true"></span>
     FORNO NERO
   </a>
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="menu.html">Menu</a>
-    <a href="prenotazioni.html" class="active">Prenota</a>
+    <a href="prenotazioni.html" class="active" aria-current="page">Prenota</a>
     <a href="index.html#contatti">Contatti</a>
   </div>
-  <div class="hamburger" id="ham" onclick="toggleMob()">
+  <button class="hamburger" id="ham" onclick="toggleMob()" aria-label="Apri menu" aria-expanded="false">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
-<!-- Booking Hero -->
 <section class="booking-hero">
-  <div class="booking-hero-bg"></div>
-  <div class="booking-hero-vignette"></div>
+  <div class="booking-hero-bg" role="img" aria-label="Forno a legna del Forno Nero"></div>
+  <div class="booking-hero-vignette" aria-hidden="true"></div>
   <div class="booking-hero-content">
     <h1 class="booking-hero-h1">Prenota la tua <em>serata</em></h1>
     <p class="booking-hero-sub">Un tavolo al Forno Nero è un'esperienza che si costruisce con cura. I posti sono limitati per preservare la qualità del servizio.</p>
   </div>
 </section>
 
-<!-- Main booking section -->
 <main class="booking-main">
   <div class="booking-layout">
     
-    <!-- Left Info Column -->
     <aside class="booking-info-col">
       <div class="booking-info-card reveal d1">
-        <div class="bic-icon">🕐</div>
+        <div class="bic-icon" aria-hidden="true">🕐</div>
         <div class="bic-content">
           <div class="bic-title">Pranzo</div>
           <div class="bic-text">Lunedì – Sabato<br>12:30 – 15:00</div>
         </div>
       </div>
       <div class="booking-info-card reveal d2">
-        <div class="bic-icon">🌙</div>
+        <div class="bic-icon" aria-hidden="true">🌙</div>
         <div class="bic-content">
           <div class="bic-title">Cena</div>
           <div class="bic-text">Lunedì – Sabato<br>19:30 – 23:30</div>
         </div>
       </div>
       <div class="booking-info-card reveal d4">
-        <div class="bic-icon">📍</div>
+        <div class="bic-icon" aria-hidden="true">📍</div>
         <div class="bic-content">
           <div class="bic-title">Dove siamo</div>
-          <div class="bic-text">Casteddu, Sardegna</div>
+          <div class="bic-text">Cagliari, Sardegna</div>
         </div>
       </div>
       <div class="booking-quote reveal">
-        <div class="bq-line"></div>
+        <div class="bq-line" aria-hidden="true"></div>
         <p>"Ogni tavolo è una storia che aspetta di essere vissuta."</p>
       </div>
     </aside>
 
-    <!-- Right Form Column -->
     <div class="booking-form-col">
 
-      <!-- Step indicator -->
-      <div class="step-indicator reveal">
+      <div class="step-indicator reveal" role="group" aria-label="Avanzamento prenotazione">
         <div class="step active" id="step-dot-1">
-          <div class="step-circle">1</div>
+          <div class="step-circle" aria-current="step">1</div>
           <div class="step-label">Data & Orario</div>
         </div>
-        <div class="step-line"></div>
+        <div class="step-line" aria-hidden="true"></div>
         <div class="step" id="step-dot-2">
           <div class="step-circle">2</div>
           <div class="step-label">Dati</div>
         </div>
-        <div class="step-line"></div>
+        <div class="step-line" aria-hidden="true"></div>
         <div class="step" id="step-dot-3">
           <div class="step-circle">3</div>
           <div class="step-label">Conferma</div>
         </div>
       </div>
 
-      <!-- STEP 1: Data/Orario -->
-      <div class="booking-step active" id="booking-step-1">
-        <div class="step-title">Quando vuoi venire?</div>
-        
-        <div class="field-group">
-          <label class="field-label">Data</label>
-          <input class="field-input" type="date" id="f-data" min="">
-          <div class="field-error" id="err-data">Seleziona una data</div>
-        </div>
-
-        <div class="field-group">
-          <label class="field-label">Servizio</label>
-          <div class="toggle-group">
-            <button class="toggle-btn active" id="toggle-pranzo" onclick="selectServizio('pranzo')">
-              🕐 Pranzo
-            </button>
-            <button class="toggle-btn" id="toggle-cena" onclick="selectServizio('cena')">
-              🌙 Cena
-            </button>
+      <form id="bookingForm" novalidate onsubmit="return false;">
+        <div class="booking-step active" id="booking-step-1">
+          <div class="step-title">Quando vuoi venire?</div>
+          
+          <div class="field-group">
+            <label class="field-label" for="f-data">Data</label>
+            <input class="field-input" type="date" id="f-data" min="" required>
+            <div class="field-error" id="err-data" role="alert">Seleziona una data</div>
           </div>
-        </div>
 
-        <div class="field-group">
-          <label class="field-label">Orario</label>
-          <div class="time-grid" id="time-grid">
-            <!-- Populated by JS -->
-          </div>
-          <div class="field-error" id="err-ora">Seleziona un orario</div>
-        </div>
-
-        <div class="field-group">
-          <label class="field-label">Numero di persone</label>
-          <div class="coperti-stepper">
-            <button class="stepper-btn" onclick="changeCoperti(-1)">−</button>
-            <div class="stepper-value">
-              <span id="coperti-num">2</span>
-              <span class="stepper-label">persone</span>
+          <div class="field-group">
+            <label class="field-label">Servizio</label>
+            <div class="toggle-group" role="radiogroup" aria-label="Servizio">
+              <button class="toggle-btn active" id="toggle-pranzo" onclick="selectServizio('pranzo')" role="radio" aria-checked="true" type="button">
+                Pranzo
+              </button>
+              <button class="toggle-btn" id="toggle-cena" onclick="selectServizio('cena')" role="radio" aria-checked="false" type="button">
+                Cena
+              </button>
             </div>
-            <button class="stepper-btn" onclick="changeCoperti(1)">+</button>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" id="time-label">Orario</label>
+            <div class="time-grid" id="time-grid" role="radiogroup" aria-labelledby="time-label">
+            </div>
+            <div class="field-error" id="err-ora" role="alert">Seleziona un orario</div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Numero di persone</label>
+            <div class="coperti-stepper">
+              <button class="stepper-btn" onclick="changeCoperti(-1)" type="button" aria-label="Diminuisci coperti">−</button>
+              <div class="stepper-value">
+                <span id="coperti-num">2</span>
+                <span class="stepper-label">persone</span>
+              </div>
+              <button class="stepper-btn" onclick="changeCoperti(1)" type="button" aria-label="Aumenta coperti">+</button>
+            </div>
+          </div>
+
+          <button class="btn-next" onclick="goToStep2()" type="button">
+            Avanti → Dati personali
+          </button>
+        </div>
+
+        <div class="booking-step" id="booking-step-2">
+          <div class="step-title">Chi sei?</div>
+
+          <div class="field-group">
+            <label class="field-label" for="f-nome">Nome e Cognome</label>
+            <input class="field-input" type="text" placeholder="Mario Rossi" id="f-nome" autocomplete="name" required>
+            <div class="field-error" id="err-nome" role="alert">Inserisci il tuo nome</div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f-tel">Numero di telefono</label>
+            <input class="field-input" type="tel" placeholder="+39 333 000 0000" id="f-tel" autocomplete="tel" inputmode="tel" required>
+            <div class="field-error" id="err-tel" role="alert">Inserisci un numero valido (es. +39 333 000 0000)</div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Occasione <span class="field-optional">(facoltativo)</span></label>
+            <div class="occasion-grid">
+              <button class="occasion-btn" onclick="selectOccasione(this, 'Cena romantica')" type="button">Romantica</button>
+              <button class="occasion-btn" onclick="selectOccasione(this, 'Compleanno')" type="button">Compleanno</button>
+              <button class="occasion-btn" onclick="selectOccasione(this, 'Anniversario')" type="button">Anniversario</button>
+              <button class="occasion-btn" onclick="selectOccasione(this, 'Lavoro')" type="button">Lavoro</button>
+            </div>
+            <input type="hidden" id="f-occasione" value="">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f-note">Note <span class="field-optional">(allergie, richieste speciali)</span></label>
+            <textarea class="field-input field-textarea" placeholder="Es. allergia al glutine, seggiolone per bambini…" id="f-note" rows="3"></textarea>
+          </div>
+
+          <div class="step-nav">
+            <button class="btn-back" onclick="goToStep(1)" type="button">← Indietro</button>
+            <button class="btn-next" onclick="submitBooking()" type="button">Invia richiesta →</button>
           </div>
         </div>
+      </form>
 
-        <button class="btn-next" onclick="goToStep2()">
-          Avanti → Dati personali
-        </button>
-      </div>
-
-      <!-- STEP 2: Dati personali -->
-      <div class="booking-step" id="booking-step-2">
-        <div class="step-title">Chi sei?</div>
-
-        <div class="field-group">
-          <label class="field-label">Nome e Cognome</label>
-          <input class="field-input" type="text" placeholder="Mario Rossi" id="f-nome" autocomplete="name">
-          <div class="field-error" id="err-nome">Inserisci il tuo nome</div>
-        </div>
-
-        <div class="field-group">
-          <label class="field-label">Numero di telefono</label>
-          <input class="field-input" type="tel" placeholder="+39 333 000 0000" id="f-tel" autocomplete="tel" inputmode="tel">
-          <div class="field-error" id="err-tel">Inserisci un numero valido</div>
-        </div>
-
-        <div class="field-group">
-          <label class="field-label">Occasione <span class="field-optional">(facoltativo)</span></label>
-          <div class="occasion-grid">
-            <button class="occasion-btn" onclick="selectOccasione(this, 'Cena romantica')">💑 Romantica</button>
-            <button class="occasion-btn" onclick="selectOccasione(this, 'Compleanno')">🎂 Compleanno</button>
-            <button class="occasion-btn" onclick="selectOccasione(this, 'Anniversario')">🥂 Anniversario</button>
-            <button class="occasion-btn" onclick="selectOccasione(this, 'Lavoro')">💼 Lavoro</button>
-          </div>
-          <input type="hidden" id="f-occasione" value="">
-        </div>
-
-        <div class="field-group">
-          <label class="field-label">Note <span class="field-optional">(allergie, richieste speciali)</span></label>
-          <textarea class="field-input field-textarea" placeholder="Es. allergia al glutine, seggiolone per bambini…" id="f-note" rows="3"></textarea>
-        </div>
-
-        <div class="step-nav">
-          <button class="btn-back" onclick="goToStep(1)">← Indietro</button>
-          <button class="btn-next" onclick="submitBooking()">Invia richiesta →</button>
-        </div>
-      </div>
-
-      <!-- STEP 3: Successo -->
       <div class="booking-step" id="booking-step-3">
         <div class="success-state">
-          <div class="success-glyph">✦</div>
+          <div class="success-glyph" aria-hidden="true">✦</div>
           <div class="success-title">Richiesta <em>inviata</em></div>
           <div class="success-summary" id="successSummary"></div>
-          <p class="success-sub">Vi contatteremo entro 2 ore per confermare il vostro tavolo al Forno Nero.</p>
+          <p class="success-sub">Ti contatteremo entro 2 ore per confermare il tavolo al Forno Nero.</p>
           <a href="menu.html" class="btn-primary" style="margin-top:32px; display:inline-block;">Rivedi il menu →</a>
+          <button class="btn-secondary" onclick="resetBooking()" style="margin-top:12px; cursor:pointer;" type="button">Nuova prenotazione</button>
         </div>
       </div>
 
@@ -202,12 +210,11 @@
   </div>
 </main>
 
-<!-- Footer -->
 <footer id="contatti">
   <div class="footer-grid">
     <div>
       <div class="footer-brand">FORNO <span>NERO</span></div>
-      <p class="footer-sub">Pizzeria d'autore nel cuore di Casteddu. Ogni pizza racconta una storia di passione, tecnica e ingredienti eccellenti. Dal 1945.</p>
+      <p class="footer-sub">Pizzeria d'autore nel cuore di Cagliari. Ogni pizza racconta una storia di passione, tecnica e ingredienti eccellenti. Dal 1945.</p>
     </div>
     <div class="footer-col">
       <h4>Naviga</h4>
@@ -218,25 +225,21 @@
     </div>
     <div class="footer-col">
       <h4>Dove siamo</h4>
-      <a href="#">Casteddu, Sardegna</a>
-      <a href="#">Lun–Sab&nbsp;&nbsp;12:30–15:00</a>
-      <a href="#">Lun–Sab&nbsp;&nbsp;19:30–23:30</a>
-      <a href="#">+39 123 456 7891</a>
+      <a href="https://maps.app.goo.gl/SE37KUVxoLeGLsXS6" target="_blank" rel="noopener">Cagliari, Sardegna</a>
+      <a href="#">Pranzo Lun–Sab&nbsp;&nbsp;12:30–15:00</a>
+      <a href="#">Cena Lun–Sab&nbsp;&nbsp;19:30–23:30</a>
+      <a href="tel:+391234567891">+39 123 456 7891</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Forno Nero · Made by Noah and Adri</span>
-    <span class="footer-ornament">✦</span>
-    <span>Pizzeria · Casteddu</span>
+    <span>© 2026 Forno Nero · Pizzeria d'Autore</span>
+    <span class="footer-ornament" aria-hidden="true">✦</span>
+    <span>Cagliari · Sardegna</span>
   </div>
 </footer>
 
-<!-- Script esternooo -->
 <script src="script.js"></script>
-
-<!-- Script internooo -->
 <script>
-// ── BOOKING STATE ──
 let selectedOra = '';
 let selectedServizio = 'pranzo';
 let coperti = 2;
@@ -245,14 +248,13 @@ let selectedOccasione = '';
 const pranzoSlots = ['12:30','13:00','13:30','14:00','14:30'];
 const cenaSlots  = ['19:30','20:00','20:30','21:00','21:30','22:00','22:30'];
 
-// Init date min
 document.getElementById('f-data').min = new Date().toISOString().split('T')[0];
 
 function renderTimeGrid() {
   const slots = selectedServizio === 'pranzo' ? pranzoSlots : cenaSlots;
   const grid = document.getElementById('time-grid');
   grid.innerHTML = slots.map(s => `
-    <button class="time-slot${selectedOra === s ? ' selected' : ''}" onclick="selectTime('${s}', this)">${s}</button>
+    <button class="time-slot${selectedOra === s ? ' selected' : ''}" onclick="selectTime('${s}', this)" role="radio" aria-checked="${selectedOra === s}" type="button">${s}</button>
   `).join('');
 }
 renderTimeGrid();
@@ -261,14 +263,20 @@ function selectServizio(s) {
   selectedServizio = s;
   selectedOra = '';
   document.getElementById('toggle-pranzo').classList.toggle('active', s === 'pranzo');
+  document.getElementById('toggle-pranzo').setAttribute('aria-checked', s === 'pranzo');
   document.getElementById('toggle-cena').classList.toggle('active', s === 'cena');
+  document.getElementById('toggle-cena').setAttribute('aria-checked', s === 'cena');
   renderTimeGrid();
 }
 
 function selectTime(t, btn) {
   selectedOra = t;
-  document.querySelectorAll('.time-slot').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('.time-slot').forEach(b => {
+    b.classList.remove('selected');
+    b.setAttribute('aria-checked', 'false');
+  });
   btn.classList.add('selected');
+  btn.setAttribute('aria-checked', 'true');
   document.getElementById('err-ora').style.display = 'none';
 }
 
@@ -297,7 +305,6 @@ function goToStep(n) {
     s.classList.toggle('active', i + 1 <= n);
     s.classList.toggle('done', i + 1 < n);
   });
-  // Scroll al form col invece che al top assoluto
   const formCol = document.querySelector('.booking-form-col');
   if (formCol) {
     formCol.scrollIntoView({behavior: 'smooth', block: 'nearest'});
@@ -322,10 +329,16 @@ function goToStep2() {
   if (valid) goToStep(2);
 }
 
+function validatePhone(tel) {
+  const cleaned = tel.replace(/[\s\-\(\)]/g, '');
+  return /^\+?\d{7,15}$/.test(cleaned);
+}
+
 function submitBooking() {
   const nome = document.getElementById('f-nome').value.trim();
   const tel  = document.getElementById('f-tel').value.trim();
   let valid = true;
+
   if (!nome) {
     document.getElementById('err-nome').style.display = 'block';
     document.getElementById('f-nome').focus();
@@ -333,16 +346,17 @@ function submitBooking() {
   } else {
     document.getElementById('err-nome').style.display = 'none';
   }
-  if (!tel) {
+
+  if (!tel || !validatePhone(tel)) {
     document.getElementById('err-tel').style.display = 'block';
-    if (valid) document.getElementById('f-tel').focus();
+    if (!document.getElementById('err-nome').style.display) document.getElementById('f-tel').focus();
     valid = false;
   } else {
     document.getElementById('err-tel').style.display = 'none';
   }
+
   if (!valid) return;
 
-  // Build summary
   const data = document.getElementById('f-data').value;
   const dateFormatted = new Date(data + 'T12:00:00').toLocaleDateString('it-IT', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
   document.getElementById('successSummary').innerHTML = `
@@ -354,6 +368,22 @@ function submitBooking() {
   `;
 
   goToStep(3);
+}
+
+function resetBooking() {
+  selectedOra = '';
+  selectedServizio = 'pranzo';
+  coperti = 2;
+  selectedOccasione = '';
+  document.getElementById('f-nome').value = '';
+  document.getElementById('f-tel').value = '';
+  document.getElementById('f-note').value = '';
+  document.getElementById('f-occasione').value = '';
+  document.querySelectorAll('.occasion-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('toggle-pranzo').classList.add('active');
+  document.getElementById('toggle-cena').classList.remove('active');
+  renderTimeGrid();
+  goToStep(1);
 }
 </script>
 </body>

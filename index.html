@@ -1,26 +1,45 @@
-<!--FORNO NERO - Ultra Modern Redesign-->
 <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Forno Nero — Pizzeria d'Autore</title>
+  <title>Forno Nero — Pizzeria d'Autore a Cagliari dal 1945</title>
+  <meta name="description" content="Pizzeria d'autore a Cagliari. Impasto 48h, forno a legna a 450°C, ingredienti selezionati. Dal 1945. Prenota il tuo tavolo.">
+  <meta property="og:title" content="Forno Nero — Pizzeria d'Autore">
+  <meta property="og:description" content="Dove il fuoco incontra l'anima. Pizzeria d'autore a Cagliari dal 1945.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fornonero.it">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>🔥</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500&family=Italiana&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style-index.css">
-  <style>body { opacity: 0; }</style>
   <style>
-    body { opacity: 0; }
-    .marquee-track { animation-play-state: paused; }
+    body { transition: opacity .5s ease; }
+    body:not(.loaded) { opacity: 0; }
+    #cur {
+      position: fixed; width: 8px; height: 8px;
+      background: var(--signal); border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      opacity: 0; transform: translate(-50%, -50%);
+      transition: width .3s, height .3s, opacity .3s;
+      mix-blend-mode: difference;
+    }
+    #cur.visible { opacity: 1; }
+    #cur.hovered { width: 32px; height: 32px; opacity: .5; }
+    :focus-visible {
+      outline: 2px solid var(--signal);
+      outline-offset: 2px;
+    }
   </style>
 </head>
 <body>
 
 <div id="cur"></div>
 
-<!-- Mobile overlay menu -->
-<div class="mob-menu" id="mobMenu">
+<div class="mob-menu" id="mobMenu" role="dialog" aria-label="Menu di navigazione">
   <div class="mob-line"></div>
   <a href="index.html" onclick="closeMob()">Home</a>
   <a href="menu.html" onclick="closeMob()">Menu</a>
@@ -29,27 +48,25 @@
   <div class="mob-line"></div>
 </div>
 
-<!-- Nav -->
-<nav id="nav">
-  <a href="index.html" class="nav-brand">
-    <span class="nav-brand-dot"></span>
+<nav id="nav" aria-label="Navigazione principale">
+  <a href="index.html" class="nav-brand" aria-label="Forno Nero - Home">
+    <span class="nav-brand-dot" aria-hidden="true"></span>
     FORNO NERO
   </a>
   <div class="nav-links">
-    <a href="index.html" class="active">Home</a>
+    <a href="index.html" class="active" aria-current="page">Home</a>
     <a href="menu.html">Menu</a>
     <a href="prenotazioni.html">Prenota</a>
     <a href="#contatti">Contatti</a>
   </div>
-  <div class="hamburger" id="ham" onclick="toggleMob()">
+  <button class="hamburger" id="ham" onclick="toggleMob()" aria-label="Apri menu" aria-expanded="false">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
-<!-- Hero -->
 <section id="hero">
-  <div class="hero-media"></div>
-  <div class="hero-vignette"></div>
+  <div class="hero-media" role="img" aria-label="Forno a legna in azione"></div>
+  <div class="hero-vignette" aria-hidden="true"></div>
   <div class="hero-content">
     <h1 class="hero-h1">
       <span class="h1-line"><span class="h1-inner">Dove il fuoco</span></span>
@@ -67,12 +84,12 @@
       <div class="hero-counter-num">48h</div>
       <div class="hero-counter-label">Maturazione</div>
     </div>
-    <div class="hero-counter-divider"></div>
+    <div class="hero-counter-divider" aria-hidden="true"></div>
     <div class="hero-counter-item">
       <div class="hero-counter-num">450°</div>
       <div class="hero-counter-label">Forno a legna</div>
     </div>
-    <div class="hero-counter-divider"></div>
+    <div class="hero-counter-divider" aria-hidden="true"></div>
     <div class="hero-counter-item">
       <div class="hero-counter-num">1945</div>
       <div class="hero-counter-label">Fondazione</div>
@@ -80,24 +97,15 @@
   </div>
 </section>
 
-<!-- Marquee -->
-<div class="marquee-strip">
+<div class="marquee-strip" aria-hidden="true">
   <div class="marquee-track">
     <div class="marquee-item">Forno a Legna</div><div class="marquee-item">Impasto 48h</div><div class="marquee-item">Ingredienti Selezionati</div><div class="marquee-item">Casteddu Dal 1945</div><div class="marquee-item">Pizza d'Autore</div><div class="marquee-item">Tradizione Viva</div><div class="marquee-item">Forno a Legna</div><div class="marquee-item">Impasto 48h</div><div class="marquee-item">Ingredienti Selezionati</div><div class="marquee-item">Casteddu Dal 1945</div><div class="marquee-item">Pizza d'Autore</div><div class="marquee-item">Tradizione Viva</div>
   </div>
 </div>
 
-<!-- Marquee 
-<div class="marquee-strip">
-  <div class="marquee-track">
-    <div class="marquee-item">Forno a Legna</div><div class="marquee-item">Impasto 48h</div><div class="marquee-item">Ingredienti Selezionati</div><div class="marquee-item">Casteddu Dal 1945</div><div class="marquee-item">Pizza d'Autore</div><div class="marquee-item">Tradizione Viva</div><div class="marquee-item">Forno a Legna</div><div class="marquee-item">Impasto 48h</div><div class="marquee-item">Ingredienti Selezionati</div><div class="marquee-item">Casteddu Dal 1945</div><div class="marquee-item">Pizza d'Autore</div><div class="marquee-item">Tradizione Viva</div>
-  </div>
-</div>
--->
-<!-- Storia -->
 <section class="parallax-section" id="storia">
   <div class="parallax-img-col">
-    <div class="parallax-img" id="pImg1" style="background-image:url('margherita.webp');"></div>
+    <div class="parallax-img" id="pImg1" style="background-image:url('margherita.webp');" role="img" aria-label="Pizza Margherita"></div>
   </div>
   <div class="parallax-text-col" data-word="FUOCO">
     <div class="parallax-text">
@@ -107,45 +115,43 @@
   </div>
 </section>
 
-<!-- Stats strip -->
 <div class="stats-strip">
   <div class="stat-item reveal d1">
     <div class="stat-number">48h</div>
     <div class="stat-label">di maturazione dell'impasto</div>
   </div>
-  <div class="stat-sep"></div>
+  <div class="stat-sep" aria-hidden="true"></div>
   <div class="stat-item reveal d2">
     <div class="stat-number">450°</div>
     <div class="stat-label">temperatura del forno a legna</div>
   </div>
-  <div class="stat-sep"></div>
+  <div class="stat-sep" aria-hidden="true"></div>
   <div class="stat-item reveal d3">
     <div class="stat-number">3</div>
     <div class="stat-label">generazioni di pizzaioli</div>
   </div>
-  <div class="stat-sep"></div>
+  <div class="stat-sep" aria-hidden="true"></div>
   <div class="stat-item reveal d4">
     <div class="stat-number">80+</div>
     <div class="stat-label">pizze nel nostro menu</div>
   </div>
 </div>
 
-<div class="ornament-divider">
+<div class="ornament-divider" aria-hidden="true">
   <span class="ornament-glyph">✦</span>
 </div>
 
-<!-- Preview menu -->
-<section class="preview-section">
+<section class="preview-section" aria-label="Anteprima del menu">
   <div class="preview-head">
     <h2 class="preview-title reveal d1">Assaggia <em>l'eccellenza</em></h2>
     <p class="preview-sub reveal d2">Tre pizze che raccontano la nostra filosofia. Ma il menu ha molto, molto di più.</p>
   </div>
   <div class="preview-grid">
-    <div class="preview-card reveal d1">
+    <article class="preview-card reveal d1">
       <div class="preview-card-img">
-        <img src="pizza_basilico.jpg" alt="Margherita">
-        <div class="preview-card-overlay"></div>
-        <div class="preview-card-num">01</div>
+        <img src="pizza_basilico.jpg" alt="Pizza Margherita con basilico fresco" loading="lazy">
+        <div class="preview-card-overlay" aria-hidden="true"></div>
+        <div class="preview-card-num" aria-hidden="true">01</div>
       </div>
       <div class="preview-card-body">
         <div class="preview-card-tag">Classica</div>
@@ -153,44 +159,43 @@
         <div class="preview-card-desc">San Marzano, fiordilatte di Agerola, basilico fresco, olio EVO</div>
         <div class="preview-card-price">€ 6,00</div>
       </div>
-    </div>
-    <div class="preview-card reveal d2">
+    </article>
+    <article class="preview-card reveal d2">
       <div class="preview-card-img">
-        <img src="borghese.jpg" alt="Borghese">
-        <div class="preview-card-overlay"></div>
-        <div class="preview-card-num">02</div>
+        <img src="borghese.jpg" alt="Pizza Borghese con prosciutto crudo e rucola" loading="lazy">
+        <div class="preview-card-overlay" aria-hidden="true"></div>
+        <div class="preview-card-num" aria-hidden="true">02</div>
       </div>
       <div class="preview-card-body">
         <div class="preview-card-tag">Specialità</div>
         <div class="preview-card-name">Borghese</div>
-        <div class="preview-card-desc">Fiordilatte, prosciutto crudo 24 mesi, rucola, grana padano, noci e un po di palle sudate</div>
+        <div class="preview-card-desc">Fiordilatte, prosciutto crudo 24 mesi, rucola, grana padano, noci</div>
         <div class="preview-card-price">€ 10,00</div>
       </div>
-    </div>
-    <div class="preview-card reveal d3">
+    </article>
+    <article class="preview-card reveal d3">
       <div class="preview-card-img">
-        <img src="bufala.jpg" alt="Bufala">
-        <div class="preview-card-overlay"></div>
-        <div class="preview-card-num">03</div>
+        <img src="bufala.jpg" alt="Pizza Bufala con mozzarella di bufala DOP" loading="lazy">
+        <div class="preview-card-overlay" aria-hidden="true"></div>
+        <div class="preview-card-num" aria-hidden="true">03</div>
       </div>
       <div class="preview-card-body">
         <div class="preview-card-tag">Firma</div>
         <div class="preview-card-name">Bufala</div>
-        <div class="preview-card-desc">Datterino bocchino, mozzarella di bufala DOPPATA, basilico, olio aromatico</div>
+        <div class="preview-card-desc">Datterino, mozzarella di bufala DOP, basilico, olio aromatico</div>
         <div class="preview-card-price">€ 13,00</div>
       </div>
-    </div>
+    </article>
   </div>
   <div class="preview-cta reveal">
     <a href="menu.html" class="btn-primary">Vedi tutto il menu →</a>
   </div>
 </section>
 
-<div class="ornament-divider">
+<div class="ornament-divider" aria-hidden="true">
   <span class="ornament-glyph">✦</span>
 </div>
 
-<!-- Parallax forno -->
 <section class="parallax-section parallax-reverse">
   <div class="parallax-text-col" data-word="LEGNA" style="background: var(--graphite);">
     <div class="parallax-text">
@@ -200,23 +205,21 @@
     </div>
   </div>
   <div class="parallax-img-col">
-    <div class="parallax-img" id="pImg2" style="background-image:url('forno.jpg'); background-position: center 30%;"></div>
+    <div class="parallax-img" id="pImg2" style="background-image:url('forno.jpg'); background-position: center 30%;" role="img" aria-label="Forno a legna acceso"></div>
   </div>
 </section>
 
-<!-- Marquee -->
-<div class="marquee-strip">
+<div class="marquee-strip" aria-hidden="true">
   <div class="marquee-track">
     <div class="marquee-item">Forno a Legna</div><div class="marquee-item">Impasto 48h</div><div class="marquee-item">Ingredienti Selezionati</div><div class="marquee-item">Casteddu Dal 1945</div><div class="marquee-item">Pizza d'Autore</div><div class="marquee-item">Tradizione Viva</div><div class="marquee-item">Forno a Legna</div><div class="marquee-item">Impasto 48h</div><div class="marquee-item">Ingredienti Selezionati</div><div class="marquee-item">Casteddu Dal 1945</div><div class="marquee-item">Pizza d'Autore</div><div class="marquee-item">Tradizione Viva</div>
   </div>
 </div>
 
-<!-- Footer -->
 <footer id="contatti">
   <div class="footer-grid">
     <div>
       <div class="footer-brand">FORNO <span>NERO</span></div>
-      <p class="footer-sub">Pizzeria d'autore nel cuore di Casteddu. Ogni pizza racconta una storia di passione, tecnica e ingredienti eccellenti. Dal 1945.</p>
+      <p class="footer-sub">Pizzeria d'autore nel cuore di Cagliari. Ogni pizza racconta una storia di passione, tecnica e ingredienti eccellenti. Dal 1945.</p>
     </div>
     <div class="footer-col">
       <h4>Naviga</h4>
@@ -227,16 +230,16 @@
     </div>
     <div class="footer-col">
       <h4>Dove siamo</h4>
-      <a href="https://maps.app.goo.gl/SE37KUVxoLeGLsXS6" target="_blank" rel="noopener">Casteddu, Sardegna</a>
+      <a href="https://maps.app.goo.gl/SE37KUVxoLeGLsXS6" target="_blank" rel="noopener">Cagliari, Sardegna</a>
       <a href="#">Pranzo Lun–Sab&nbsp;&nbsp;12:30–15:00</a>
-      <a href="#">Cena – Lun–Sab&nbsp;&nbsp;19:30–23:30</a>
-      <a href="#">+39 123 456 7891</a>
+      <a href="#">Cena Lun–Sab&nbsp;&nbsp;19:30–23:30</a>
+      <a href="tel:+391234567891">+39 123 456 7891</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Forno Nero · Made by Mockly.</span>
-    <span class="footer-ornament">✦</span>
-    <span>Pizzeria · Casteddu</span>
+    <span>© 2026 Forno Nero · Pizzeria d'Autore</span>
+    <span class="footer-ornament" aria-hidden="true">✦</span>
+    <span>Cagliari · Sardegna</span>
   </div>
 </footer>
 
