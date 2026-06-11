@@ -13,18 +13,18 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>🔥</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="img/pizza_basilico.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500&family=Italiana&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style-menu.css">
   <style>
-    :focus-visible {
-      outline: 2px solid var(--signal);
-      outline-offset: 2px;
-    }
+    .page-overlay { position:fixed; inset:0; background:#0a0a0a; z-index:9999; opacity:1; pointer-events:none; }
   </style>
 </head>
 <body>
 
+<div class="page-overlay" id="pageOverlay"></div>
+<a href="#main-content" class="skip-link">Salta al contenuto</a>
 <div id="cur"></div>
 
 <div class="mob-menu" id="mobMenu" role="dialog" aria-label="Menu di navigazione">
@@ -43,7 +43,7 @@
   </a>
   <div class="nav-links">
     <a href="index.html">Home</a>
-    <a href="menu.html" class="active" aria-current="page">Menu</a>
+    <a href="menu.html">Menu</a>
     <a href="prenotazioni.html">Prenota</a>
     <a href="index.html#contatti">Contatti</a>
   </div>
@@ -67,23 +67,31 @@
     <button class="menu-tab active" data-tab="rosse" onclick="switchTab('rosse', this)" role="tab" aria-selected="true" aria-controls="tab-rosse" id="tab-btn-rosse">
       Pizze Rosse
     </button>
+    <button class="menu-tab" data-tab="bianche" onclick="switchTab('bianche', this)" role="tab" aria-selected="false" aria-controls="tab-bianche" id="tab-btn-bianche">
+      Pizze Bianche
+    </button>
     <button class="menu-tab" data-tab="specialita" onclick="switchTab('specialita', this)" role="tab" aria-selected="false" aria-controls="tab-specialita" id="tab-btn-specialita">
       Specialità
     </button>
   </div>
 </div>
 
-<main class="menu-main">
+<main class="menu-main" id="main-content">
+
+  <div class="menu-search-bar">
+    <div class="menu-search-icon" aria-hidden="true">⌕</div>
+    <input type="text" class="menu-search-input" id="menuSearch" placeholder="Cerca nel menu per nome o ingrediente..." aria-label="Cerca nel menu">
+  </div>
 
   <div class="tab-content active" id="tab-rosse" role="tabpanel" aria-labelledby="tab-btn-rosse">
     
     <div class="menu-featured-row reveal">
       <div class="menu-feat-img">
-        <img src="pizza_basilico.jpg" alt="Pizza Margherita con basilico fresco">
+        <img src="img/pizza_basilico.jpg" alt="Pizza Margherita con basilico fresco">
       </div>
       <div class="menu-feat-info">
-        <div class="feat-tag">La Classica · N°01</div>
-        <div class="feat-name">Marga<em>rita</em></div>
+        <div class="feat-tag">La Classica · N°01 <span class="feat-badge-chef">✦ Consigliata</span></div>
+        <div class="feat-name">Margherita</div>
         <p class="feat-desc">Pomodoro San Marzano, fiordilatte di Agerola, basilico fresco, olio EVO a crudo. La perfezione nella sua forma più pura.</p>
         <div class="feat-price-wrap">
           <div class="feat-price-label">Prezzo</div>
@@ -95,356 +103,392 @@
     <div class="pizza-grid">
       <div class="pizza-row reveal d1">
         <div class="pizza-info">
-          <div class="pizza-name">Marinara</div>
-          <div class="pizza-desc">Pomodoro, aglio, origano</div>
+          <div class="pizza-name">
+            Marinara
+            <span class="diet-badge veg">V</span>
+          </div>
+          <div class="pizza-desc">Pomodoro San Marzano, aglio di Caraglio, origano selvatico</div>
         </div>
         <div class="pizza-price">€ 7,00</div>
       </div>
       <div class="pizza-row reveal d2">
         <div class="pizza-info">
-          <div class="pizza-name">Calzone</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, prosciutto cotto, funghi, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,50</div>
-      </div>
-      <div class="pizza-row reveal d1">
-        <div class="pizza-info">
-          <div class="pizza-name">Campagnola</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, pancetta, cipolla, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,50</div>
-      </div>
-      <div class="pizza-row reveal d2">
-        <div class="pizza-info">
-          <div class="pizza-name">Michele</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, prosciutto, funghi, salamino piccante, würstel, olive, uovo, origano</div>
-        </div>
-        <div class="pizza-price">€ 12,00</div>
-      </div>
-      <div class="pizza-row reveal d1">
-        <div class="pizza-info">
-          <div class="pizza-name">Capricciosa</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, prosciutto, funghi, carciofi, origano</div>
-        </div>
-        <div class="pizza-price">€ 10,00</div>
-      </div>
-      <div class="pizza-row reveal d2">
-        <div class="pizza-info">
-          <div class="pizza-name">Diavola</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, salamino piccante, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,50</div>
-      </div>
-      <div class="pizza-row reveal d1">
-        <div class="pizza-info">
-          <div class="pizza-name">Salsiccia e Friarielli</div>
-          <div class="pizza-desc">Mozzarella, salsiccia, cime di rapa, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,50</div>
-      </div>
-      <div class="pizza-row reveal d2">
-        <div class="pizza-info">
-          <div class="pizza-name">Deliziosa</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, peperoni, pancetta, cipolla, origano</div>
+          <div class="pizza-name">
+            Capricciosa
+            <span class="diet-badge chef">✦</span>
+          </div>
+          <div class="pizza-desc">Pomodoro, mozzarella fior di latte, prosciutto cotto, funghi, carciofi, olive</div>
         </div>
         <div class="pizza-price">€ 10,00</div>
       </div>
       <div class="pizza-row reveal d1">
         <div class="pizza-info">
-          <div class="pizza-name">Delicata</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, pomodorini, mozzarella di bufala, origano</div>
+          <div class="pizza-name">
+            Diavola
+            <span class="diet-badge spicy">🌶</span>
+            <span class="diet-badge chef">✦</span>
+          </div>
+          <div class="pizza-desc">Pomodoro, mozzarella, salamino piccante artigianale, peperoncino calabro</div>
+        </div>
+        <div class="pizza-price">€ 9,50</div>
+      </div>
+      <div class="pizza-row reveal d2">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Quattro Stagioni
+            <span class="diet-badge chef">✦</span>
+          </div>
+          <div class="pizza-desc">Pomodoro, mozzarella, prosciutto, funghi porcini, carciofi, olive taggiasche</div>
+        </div>
+        <div class="pizza-price">€ 9,50</div>
+      </div>
+      <div class="pizza-row reveal d1">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Romana
+            <span class="diet-badge fish">P</span>
+          </div>
+          <div class="pizza-desc">Pomodoro, mozzarella, acciughe di Cetara, origano, capperi</div>
+        </div>
+        <div class="pizza-price">€ 9,00</div>
+      </div>
+      <div class="pizza-row reveal d2">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Salsiccia e Friarielli
+          </div>
+          <div class="pizza-desc">Mozzarella, salsiccia artigianale sarda, cime di rapa, scaglie di pecorino</div>
+        </div>
+        <div class="pizza-price">€ 9,50</div>
+      </div>
+      <div class="pizza-row reveal d1">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Quattro Formaggi
+            <span class="diet-badge veg">V</span>
+          </div>
+          <div class="pizza-desc">Mozzarella, gorgonzola DOP, fontina, parmigiano reggiano 24 mesi — base pomodoro</div>
+        </div>
+        <div class="pizza-price">€ 9,00</div>
+      </div>
+      <div class="pizza-row reveal d2">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Ortolana
+            <span class="diet-badge veg">V</span>
+          </div>
+          <div class="pizza-desc">Pomodoro, mozzarella, melanzane grigliate, peperoni, zucchine, pomodorini confit</div>
+        </div>
+        <div class="pizza-price">€ 10,00</div>
+      </div>
+      <div class="pizza-row reveal d1">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Mortadella e Pistacchio
+            <span class="diet-badge chef">✦</span>
+          </div>
+          <div class="pizza-desc">Mozzarella, mortadella IGP, granella di pistacchio di Bronte, burrata, crema di pistacchio</div>
         </div>
         <div class="pizza-price">€ 11,00</div>
       </div>
       <div class="pizza-row reveal d2">
         <div class="pizza-info">
-          <div class="pizza-name">Reginella</div>
-          <div class="pizza-desc">Mozzarella, olive, pomodori secchi, burrata, origano</div>
+          <div class="pizza-name">
+            Tonno e Cipolla
+            <span class="diet-badge fish">P</span>
+          </div>
+          <div class="pizza-desc">Pomodoro, mozzarella, tonno pinna gialla, cipolla rossa di Tropea, origano</div>
         </div>
-        <div class="pizza-price">€ 11,00</div>
+        <div class="pizza-price">€ 9,50</div>
       </div>
       <div class="pizza-row reveal d1">
         <div class="pizza-info">
-          <div class="pizza-name">Funghi</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, funghi, origano</div>
+          <div class="pizza-name">
+            Frutti di Mare
+            <span class="diet-badge fish">P</span>
+          </div>
+          <div class="pizza-desc">Pomodoro, aglio, cozze, gamberetti, vongole veraci, prezzemolo, olio EVO</div>
         </div>
-        <div class="pizza-price">€ 9,00</div>
+        <div class="pizza-price">€ 13,00</div>
       </div>
       <div class="pizza-row reveal d2">
         <div class="pizza-info">
-          <div class="pizza-name">Mortadella</div>
-          <div class="pizza-desc">Mozzarella, mortadella, pistacchi, brie, origano</div>
+          <div class="pizza-name">
+            Rucola e Bresaola
+          </div>
+          <div class="pizza-desc">Pomodoro, mozzarella, rucola selvatica, bresaola Valtellina, scaglie di grana, limone</div>
         </div>
         <div class="pizza-price">€ 10,00</div>
       </div>
       <div class="pizza-row reveal d1">
         <div class="pizza-info">
-          <div class="pizza-name">Carnica</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, salsiccia, cipolla, origano</div>
+          <div class="pizza-name">
+            Siciliana
+            <span class="diet-badge fish">P</span>
+          </div>
+          <div class="pizza-desc">Pomodoro, mozzarella, acciughe, capperi di Pantelleria, olive nocellara, origano</div>
         </div>
         <div class="pizza-price">€ 9,50</div>
       </div>
       <div class="pizza-row reveal d2">
         <div class="pizza-info">
-          <div class="pizza-name">Otto Gusti</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, ingredienti misti, origano</div>
-        </div>
-        <div class="pizza-price">€ 10,00</div>
-      </div>
-      <div class="pizza-row reveal d1">
-        <div class="pizza-info">
-          <div class="pizza-name">Frutti di Mare</div>
-          <div class="pizza-desc">Pomodoro, aglio, frutti di mare, prezzemolo, origano</div>
-        </div>
-        <div class="pizza-price">€ 12,00</div>
-      </div>
-      <div class="pizza-row reveal d2">
-        <div class="pizza-info">
-          <div class="pizza-name">Melanzane</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, melanzane, grana, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,00</div>
-      </div>
-      <div class="pizza-row reveal d1">
-        <div class="pizza-info">
-          <div class="pizza-name">Ortolana</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, funghi, peperoni, cipolla, origano</div>
-        </div>
-        <div class="pizza-price">€ 10,00</div>
-      </div>
-      <div class="pizza-row reveal d2">
-        <div class="pizza-info">
-          <div class="pizza-name">Gamberetti</div>
-          <div class="pizza-desc">Pomodoro, aglio, gamberetti, prezzemolo, origano</div>
+          <div class="pizza-name">
+            Vesuvio
+            <span class="diet-badge special">Ripiena</span>
+          </div>
+          <div class="pizza-desc">Pomodoro, mozzarella, prosciutto cotto, funghi, salame piccante, würstel — pizza ripiena</div>
         </div>
         <div class="pizza-price">€ 12,00</div>
       </div>
       <div class="pizza-row reveal d1">
         <div class="pizza-info">
-          <div class="pizza-name">Nordica</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, peperoni, salame piccante, würstel, origano</div>
+          <div class="pizza-name">
+            Napoli
+            <span class="diet-badge fish">P</span>
+          </div>
+          <div class="pizza-desc">Pomodoro, mozzarella, acciughe di Cetara, capperi di Pantelleria, origano, olive</div>
         </div>
-        <div class="pizza-price">€ 10,00</div>
+        <div class="pizza-price">€ 8,50</div>
       </div>
       <div class="pizza-row reveal d2">
         <div class="pizza-info">
-          <div class="pizza-name">Porcini</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, funghi porcini, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,50</div>
-      </div>
-      <div class="pizza-row reveal d1">
-        <div class="pizza-info">
-          <div class="pizza-name">Primo Amore</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, pomodorini, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,00</div>
-      </div>
-      <div class="pizza-row reveal d2">
-        <div class="pizza-info">
-          <div class="pizza-name">Prosciutto</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, prosciutto, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,00</div>
-      </div>
-      <div class="pizza-row reveal d1">
-        <div class="pizza-info">
-          <div class="pizza-name">Prosciutto e Funghi</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, prosciutto, funghi, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,50</div>
-      </div>
-      <div class="pizza-row reveal d2">
-        <div class="pizza-info">
-          <div class="pizza-name">Pizza Frico</div>
-          <div class="pizza-desc">Patate, formaggi misti, origano</div>
+          <div class="pizza-name">
+            Calabrese
+            <span class="diet-badge spicy">🌶</span>
+            <span class="diet-badge chef">✦</span>
+          </div>
+          <div class="pizza-desc">Pomodoro, mozzarella, 'nduja artigianale, peperone crusco, ricotta affumicata</div>
         </div>
         <div class="pizza-price">€ 10,00</div>
       </div>
       <div class="pizza-row reveal d1">
         <div class="pizza-info">
-          <div class="pizza-name">Quattro Formaggi</div>
-          <div class="pizza-desc">Mozzarella, formaggi misti, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,00</div>
-      </div>
-      <div class="pizza-row reveal d2">
-        <div class="pizza-info">
-          <div class="pizza-name">Quattro Stagioni</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, prosciutto, funghi, carciofi, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,50</div>
-      </div>
-      <div class="pizza-row reveal d1">
-        <div class="pizza-info">
-          <div class="pizza-name">Romana</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, acciughe, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,00</div>
-      </div>
-      <div class="pizza-row reveal d2">
-        <div class="pizza-info">
-          <div class="pizza-name">Rustica</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, pomodorini, tonno, cipolla, origano</div>
+          <div class="pizza-name">
+            Contadina
+          </div>
+          <div class="pizza-desc">Pomodoro, mozzarella, funghi porcini, salsiccia artigianale, patate al forno, rosmarino</div>
         </div>
         <div class="pizza-price">€ 10,00</div>
       </div>
-      <div class="pizza-row reveal d1">
-        <div class="pizza-info">
-          <div class="pizza-name">Salamino</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, salamino piccante, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,00</div>
-      </div>
       <div class="pizza-row reveal d2">
         <div class="pizza-info">
-          <div class="pizza-name">San Daniele</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, prosciutto crudo, origano</div>
-        </div>
-        <div class="pizza-price">€ 10,00</div>
-      </div>
-      <div class="pizza-row reveal d1">
-        <div class="pizza-info">
-          <div class="pizza-name">Sfiziosa</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, salame piccante, würstel, olive, tonno, cipolla, gorgonzola, origano</div>
-        </div>
-        <div class="pizza-price">€ 11,00</div>
-      </div>
-      <div class="pizza-row reveal d2">
-        <div class="pizza-info">
-          <div class="pizza-name">Siciliana</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, acciughe, capperi, olive, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,50</div>
-      </div>
-      <div class="pizza-row reveal d1">
-        <div class="pizza-info">
-          <div class="pizza-name">Spinaci e Ricotta</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, spinaci, ricotta, grana, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,50</div>
-      </div>
-      <div class="pizza-row reveal d2">
-        <div class="pizza-info">
-          <div class="pizza-name">Tirolese</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, panna, speck, origano</div>
-        </div>
-        <div class="pizza-price">€ 10,00</div>
-      </div>
-      <div class="pizza-row reveal d1">
-        <div class="pizza-info">
-          <div class="pizza-name">Pizza Tonno</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, tonno, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,00</div>
-      </div>
-      <div class="pizza-row reveal d2">
-        <div class="pizza-info">
-          <div class="pizza-name">Venzonese</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, funghi, ricotta, salsiccia, zucchine, origano</div>
+          <div class="pizza-name">
+            Carbonara
+            <span class="diet-badge chef">✦</span>
+          </div>
+          <div class="pizza-desc">Crema di parmigiano reggiano, guanciale croccante, uovo, pecorino romano, pepe nero</div>
         </div>
         <div class="pizza-price">€ 11,00</div>
       </div>
       <div class="pizza-row reveal d1">
         <div class="pizza-info">
-          <div class="pizza-name">Verdure</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, asparagi, melanzane, peperoni, pomodorini, spinaci, zucchine, parmigiana, origano</div>
-        </div>
-        <div class="pizza-price">€ 10,00</div>
-      </div>
-      <div class="pizza-row reveal d2">
-        <div class="pizza-info">
-          <div class="pizza-name">Pizza Würstel</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, würstel, origano</div>
-        </div>
-        <div class="pizza-price">€ 9,00</div>
-      </div>
-      <div class="pizza-row reveal d1">
-        <div class="pizza-info">
-          <div class="pizza-name">Würstel e Patatine</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, würstel, patate fritte, origano</div>
-        </div>
-        <div class="pizza-price">€ 10,00</div>
-      </div>
-      <div class="pizza-row reveal d2">
-        <div class="pizza-info">
-          <div class="pizza-name">Vesuvio <span class="pizza-tag">pizza ripiena</span></div>
-          <div class="pizza-desc">Pomodoro, mozzarella, prosciutto, funghi, salame piccante, würstel, origano</div>
+          <div class="pizza-name">
+            Gamberi e Zucchine
+            <span class="diet-badge fish">P</span>
+          </div>
+          <div class="pizza-desc">Pomodoro, mozzarella, gamberetti, zucchine grigliate, limone, prezzemolo, olio EVO</div>
         </div>
         <div class="pizza-price">€ 12,00</div>
       </div>
-      <div class="pizza-row reveal d1">
-        <div class="pizza-info">
-          <div class="pizza-name">Rucola e Bresaola</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, rucola, bresaola, scaglie di parmigiano, origano</div>
-        </div>
-        <div class="pizza-price">€ 10,00</div>
-      </div>
       <div class="pizza-row reveal d2">
         <div class="pizza-info">
-          <div class="pizza-name">Zingara</div>
-          <div class="pizza-desc">Pomodoro, mozzarella, prosciutto, peperoni, brie, olive, origano</div>
+          <div class="pizza-name">
+            Parmigiana
+            <span class="diet-badge veg">V</span>
+          </div>
+          <div class="pizza-desc">Pomodoro, mozzarella, melanzane fritte, parmigiano reggiano, basilico, ricotta salata</div>
         </div>
-        <div class="pizza-price">€ 10,00</div>
+        <div class="pizza-price">€ 9,50</div>
       </div>
     </div>
+    <div class="search-empty">Nessuna pizza trovata. Prova con un altro termine.</div>
+  </div>
+
+  <div class="tab-content" id="tab-bianche" role="tabpanel" aria-labelledby="tab-btn-bianche">
+    <div class="menu-featured-row reveal">
+      <div class="menu-feat-img">
+        <img src="img/forno.jpg" alt="Pizza Forno Nero" loading="lazy" class="img-reveal">
+      </div>
+      <div class="menu-feat-info">
+        <div class="feat-tag">La Firma · N°01 <span class="feat-badge-chef">✦ Imperdibile</span></div>
+        <div class="feat-name">Forno <em>Nero</em></div>
+        <p class="feat-desc">Burrata fresca pugliese, salsiccia artigianale sarda, miele di castagno, noci tostate, timo limoncino. La nostra firma, la nostra identità.</p>
+        <div class="feat-price-wrap">
+          <div class="feat-price-label">Prezzo</div>
+          <div class="feat-price">€ 18,00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pizza-grid">
+      <div class="pizza-row reveal d2">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Frico
+            <span class="diet-badge veg">V</span>
+          </div>
+          <div class="pizza-desc">Patate al forno, montasio DOP, fontina, scamorza affumicata, rosmarino</div>
+        </div>
+        <div class="pizza-price">€ 11,00</div>
+      </div>
+      <div class="pizza-row reveal d1">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Gorgonzola e Pere
+          </div>
+          <div class="pizza-desc">Mozzarella, gorgonzola DOP, pere caramellate, noci caramellate, riduzione di balsamico</div>
+        </div>
+        <div class="pizza-price">€ 11,00</div>
+      </div>
+      <div class="pizza-row reveal d2">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Bufala e Crudo
+            <span class="diet-badge chef">✦</span>
+          </div>
+          <div class="pizza-desc">Mozzarella di bufala DOP, prosciutto crudo di Parma 24 mesi, rucola, grana padano, noci tostate</div>
+        </div>
+        <div class="pizza-price">€ 14,00</div>
+      </div>
+      <div class="pizza-row reveal d1">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Spinaci e Ricotta
+            <span class="diet-badge veg">V</span>
+          </div>
+          <div class="pizza-desc">Base bianca, spinaci saltati, ricotta di pecora, grana, noce moscata, scaglie di mandorle</div>
+        </div>
+        <div class="pizza-price">€ 9,50</div>
+      </div>
+      <div class="pizza-row reveal d2">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Tirolese
+          </div>
+          <div class="pizza-desc">Mozzarella, speck Alto Adige, panna fresca, funghi porcini, timo, grana</div>
+        </div>
+        <div class="pizza-price">€ 11,00</div>
+      </div>
+      <div class="pizza-row reveal d1">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Zingara
+            <span class="diet-badge spicy">🌶</span>
+          </div>
+          <div class="pizza-desc">Mozzarella, prosciutto cotto, peperoni grigliati, brie, olive taggiasche, peperoncino</div>
+        </div>
+        <div class="pizza-price">€ 10,00</div>
+      </div>
+      <div class="pizza-row reveal d2">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Delicata
+            <span class="diet-badge veg">V</span>
+          </div>
+          <div class="pizza-desc">Mozzarella di bufala DOP, pomodorini confit, basilico fresco, olio EVO, fiocco di sale</div>
+        </div>
+        <div class="pizza-price">€ 11,00</div>
+      </div>
+      <div class="pizza-row reveal d1">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Cotto e Funghi
+          </div>
+          <div class="pizza-desc">Mozzarella, prosciutto cotto, funghi porcini, grana padano, prezzemolo</div>
+        </div>
+        <div class="pizza-price">€ 10,00</div>
+      </div>
+      <div class="pizza-row reveal d2">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Speck e Brie
+            <span class="diet-badge chef">✦</span>
+          </div>
+          <div class="pizza-desc">Mozzarella, speck Alto Adige IGP, brie, noci caramellate, miele di castagno</div>
+        </div>
+        <div class="pizza-price">€ 11,00</div>
+      </div>
+      <div class="pizza-row reveal d1">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Tartufo e Salsiccia
+            <span class="diet-badge chef">✦</span>
+          </div>
+          <div class="pizza-desc">Base bianca, salsiccia artigianale, crema di tartufo nero, mozzarella, porcini trifolati</div>
+        </div>
+        <div class="pizza-price">€ 13,00</div>
+      </div>
+      <div class="pizza-row reveal d2">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Capra e Cipolla Caramellata
+            <span class="diet-badge veg">V</span>
+          </div>
+          <div class="pizza-desc">Mozzarella, formaggio di capra, cipolla caramellata, noci, miele, timo limoncino</div>
+        </div>
+        <div class="pizza-price">€ 11,00</div>
+      </div>
+      <div class="pizza-row reveal d1">
+        <div class="pizza-info">
+          <div class="pizza-name">
+            Parma Bianca
+          </div>
+          <div class="pizza-desc">Burrata fresca, prosciutto crudo di Parma 24 mesi, rucola, pomodorini confit, scaglie di grana</div>
+        </div>
+        <div class="pizza-price">€ 14,00</div>
+      </div>
+    </div>
+    <div class="search-empty">Nessuna pizza trovata. Prova con un altro termine.</div>
   </div>
 
   <div class="tab-content" id="tab-specialita" role="tabpanel" aria-labelledby="tab-btn-specialita">
-    <div class="specialita-intro reveal">
+    <div class="specialita-intro burn-reveal">
       <p>Le nostre quattro creazioni di punta — pizze che vanno oltre la tradizione, raccontando il carattere di Forno Nero.</p>
     </div>
     <div class="specialita-grid">
       <article class="spec-card reveal d1">
-        <div class="spec-card-img">
-          <img src="borghese.jpg" alt="Pizza Borghese con prosciutto crudo e rucola" loading="lazy">
-          <div class="spec-img-overlay" aria-hidden="true"></div>
-          <div class="spec-card-number" aria-hidden="true">01</div>
-        </div>
-        <div class="spec-card-body">
-          <div class="spec-card-tag">Specialità della Casa</div>
-          <div class="spec-card-name">Borghese</div>
-          <div class="spec-card-desc">Fiordilatte, prosciutto crudo 24 mesi, rucola, grana padano, noci tostate. Una pizza che profuma di eleganza.</div>
-          <div class="spec-card-price">€ 14,00</div>
+        <div class="spec-card-inner">
+          <div class="spec-card-img">
+            <img src="img/borghese.jpg" alt="Pizza Borghese con prosciutto crudo e rucola" loading="lazy" class="img-reveal">
+            <div class="spec-img-overlay" aria-hidden="true"></div>
+            <div class="spec-card-number" aria-hidden="true">01</div>
+          </div>
+          <div class="spec-card-body">
+            <div class="spec-card-tag">Specialità della Casa</div>
+            <div class="spec-card-name">Borghese</div>
+            <div class="spec-card-desc">Fiordilatte, prosciutto crudo 24 mesi, rucola, grana padano, noci tostate. Una pizza che profuma di eleganza.</div>
+            <div class="spec-card-price">€ 14,00</div>
+          </div>
         </div>
       </article>
       <article class="spec-card reveal d2">
-        <div class="spec-card-img">
-          <img src="bufala.jpg" alt="Pizza Bufala con mozzarella DOP" loading="lazy">
-          <div class="spec-img-overlay" aria-hidden="true"></div>
-          <div class="spec-card-number" aria-hidden="true">02</div>
-        </div>
-        <div class="spec-card-body">
-          <div class="spec-card-tag">Specialità della Casa</div>
-          <div class="spec-card-name">Bufala</div>
-          <div class="spec-card-desc">Pomodoro datterino, mozzarella di bufala DOP, basilico fresco, olio aromatico a crudo. La tradizione campana.</div>
-          <div class="spec-card-price">€ 13,00</div>
+        <div class="spec-card-inner">
+          <div class="spec-card-img">
+            <img src="img/bufala.jpg" alt="Pizza Bufala con mozzarella DOP" loading="lazy" class="img-reveal">
+            <div class="spec-img-overlay" aria-hidden="true"></div>
+            <div class="spec-card-number" aria-hidden="true">02</div>
+          </div>
+          <div class="spec-card-body">
+            <div class="spec-card-tag">Specialità della Casa</div>
+            <div class="spec-card-name">Bufala</div>
+            <div class="spec-card-desc">Pomodoro datterino, mozzarella di bufala DOP, basilico fresco, olio aromatico a crudo. La tradizione campana.</div>
+            <div class="spec-card-price">€ 13,00</div>
+          </div>
         </div>
       </article>
       <article class="spec-card reveal d3">
-        <div class="spec-card-img spec-placeholder">
-          <div class="spec-placeholder-bg" aria-label="Bosco">🌿</div>
-          <div class="spec-img-overlay" aria-hidden="true"></div>
-          <div class="spec-card-number" aria-hidden="true">03</div>
-        </div>
-        <div class="spec-card-body">
-          <div class="spec-card-tag">Specialità della Casa</div>
-          <div class="spec-card-name">Bosco</div>
-          <div class="spec-card-desc">Base bianca, funghi porcini, tartufo nero, mozzarella, timo fresco. Un viaggio nel sottobosco sardo.</div>
-          <div class="spec-card-price">€ 16,00</div>
-        </div>
-      </article>
-      <article class="spec-card reveal d4">
-        <div class="spec-card-img">
-          <img src="forno.jpg" alt="Forno a legna Forno Nero" loading="lazy">
-          <div class="spec-img-overlay" aria-hidden="true"></div>
-          <div class="spec-card-number" aria-hidden="true">04</div>
-        </div>
-        <div class="spec-card-body">
-          <div class="spec-card-tag">La firma della casa</div>
-          <div class="spec-card-name">Forno Nero</div>
+        <div class="spec-card-inner">
+          <div class="spec-card-img">
+            <img src="img/forno.jpg" alt="Forno a legna Forno Nero" loading="lazy" class="img-reveal">
+            <div class="spec-img-overlay" aria-hidden="true"></div>
+            <div class="spec-card-number" aria-hidden="true">03</div>
+          </div>
+          <div class="spec-card-body">
+            <div class="spec-card-tag">La firma della casa</div>
+            <div class="spec-card-name">Forno Nero</div>
           <div class="spec-card-desc">Burrata fresca, salsiccia artigianale, miele di castagno, noci tostate. La nostra firma, la nostra identità.</div>
           <div class="spec-card-price">€ 18,00</div>
+        </div>
         </div>
       </article>
     </div>
@@ -490,6 +534,7 @@
     <span>© 2026 Forno Nero · Pizzeria d'Autore</span>
     <span class="footer-ornament" aria-hidden="true">✦</span>
     <span>Cagliari · Sardegna</span>
+    <span>Made by <a href="https://mockly.it" target="_blank" rel="noopener" style="color:var(--signal);text-decoration:none;">mockly</a></span>
   </div>
 </footer>
 
@@ -504,14 +549,44 @@ function switchTab(tabId, btn) {
   btn.classList.add('active');
   btn.setAttribute('aria-selected', 'true');
   document.getElementById('tab-' + tabId).classList.add('active');
+  document.getElementById('menuSearch').value = '';
+  filterMenu('');
   setTimeout(() => {
-    document.querySelectorAll('#tab-' + tabId + ' .reveal').forEach(el => {
+    document.querySelectorAll('#tab-' + tabId + ' .reveal, #tab-' + tabId + ' .burn-reveal').forEach(el => {
       el.classList.remove('visible');
       void el.offsetWidth;
       obs.observe(el);
     });
   }, 50);
 }
+
+function filterMenu(query) {
+  const activeTab = document.querySelector('.tab-content.active');
+  if (!activeTab) return;
+  const q = query.toLowerCase().trim();
+  let visible = 0;
+  activeTab.querySelectorAll('.pizza-row').forEach(row => {
+    const text = row.textContent.toLowerCase();
+    if (!q || text.includes(q)) {
+      row.classList.remove('hidden', 'match-highlight');
+      if (q && text.includes(q)) row.classList.add('match-highlight');
+      visible++;
+    } else {
+      row.classList.add('hidden');
+      row.classList.remove('match-highlight');
+    }
+  });
+  const empty = activeTab.querySelector('.search-empty');
+  if (empty) empty.style.display = q && !visible ? 'block' : 'none';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('menuSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', e => filterMenu(e.target.value));
+  }
+});
+
 </script>
 </body>
 </html>

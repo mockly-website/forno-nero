@@ -13,30 +13,19 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>🔥</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="img/forno.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500&family=Italiana&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style-index.css">
   <style>
-    body { transition: opacity .5s ease; }
-    body:not(.loaded) { opacity: 0; }
-    #cur {
-      position: fixed; width: 8px; height: 8px;
-      background: var(--signal); border-radius: 50%;
-      pointer-events: none; z-index: 9998;
-      opacity: 0; transform: translate(-50%, -50%);
-      transition: width .3s, height .3s, opacity .3s;
-      mix-blend-mode: difference;
-    }
-    #cur.visible { opacity: 1; }
-    #cur.hovered { width: 32px; height: 32px; opacity: .5; }
-    :focus-visible {
-      outline: 2px solid var(--signal);
-      outline-offset: 2px;
-    }
+    .page-overlay { position:fixed; inset:0; background:#0a0a0a; z-index:9999; opacity:1; pointer-events:none; }
   </style>
 </head>
 <body>
 
+<div class="page-overlay" id="pageOverlay"></div>
+<a href="#main-content" class="skip-link">Salta al contenuto</a>
+<div id="main-content"></div>
 <div id="cur"></div>
 
 <div class="mob-menu" id="mobMenu" role="dialog" aria-label="Menu di navigazione">
@@ -54,7 +43,7 @@
     FORNO NERO
   </a>
   <div class="nav-links">
-    <a href="index.html" class="active" aria-current="page">Home</a>
+    <a href="index.html">Home</a>
     <a href="menu.html">Menu</a>
     <a href="prenotazioni.html">Prenota</a>
     <a href="#contatti">Contatti</a>
@@ -105,12 +94,12 @@
 
 <section class="parallax-section" id="storia">
   <div class="parallax-img-col">
-    <div class="parallax-img" id="pImg1" style="background-image:url('margherita.webp');" role="img" aria-label="Pizza Margherita"></div>
+    <div class="parallax-img" id="pImg1" style="background-image:url('img/margherita.jpg');" role="img" aria-label="Pizza Margherita"></div>
   </div>
   <div class="parallax-text-col" data-word="FUOCO">
     <div class="parallax-text">
-      <h2 class="section-h2 reveal d2">Dal 1945,<br>l'arte del <em>fuoco</em></h2>
-      <p class="section-body reveal d3">Tutto nasce da un forno costruito a mano con pietre vulcaniche del Vesuvio. Tre generazioni di pizzaioli che hanno preservato un'unica certezza: la qualità non si scende a compromessi. Ogni impasto è lavorato lentamente, ogni ingrediente scelto con ossessione maniacale.</p>
+      <h2 class="section-h2 burn-reveal d2">Dal 1945,<br>l'arte del <em>fuoco</em></h2>
+      <p class="section-body burn-reveal d3">Tutto nasce da un forno costruito a mano con pietre vulcaniche del Vesuvio. Tre generazioni di pizzaioli che hanno preservato un'unica certezza: la qualità non si scende a compromessi. Ogni impasto è lavorato lentamente, ogni ingrediente scelto con ossessione maniacale.</p>
     </div>
   </div>
 </section>
@@ -148,42 +137,48 @@
   </div>
   <div class="preview-grid">
     <article class="preview-card reveal d1">
-      <div class="preview-card-img">
-        <img src="pizza_basilico.jpg" alt="Pizza Margherita con basilico fresco" loading="lazy">
-        <div class="preview-card-overlay" aria-hidden="true"></div>
-        <div class="preview-card-num" aria-hidden="true">01</div>
-      </div>
-      <div class="preview-card-body">
-        <div class="preview-card-tag">Classica</div>
-        <div class="preview-card-name">Margherita</div>
-        <div class="preview-card-desc">San Marzano, fiordilatte di Agerola, basilico fresco, olio EVO</div>
-        <div class="preview-card-price">€ 6,00</div>
+      <div class="preview-card-inner">
+        <div class="preview-card-img">
+          <img src="img/pizza_basilico.jpg" alt="Pizza Margherita con basilico fresco" loading="lazy" class="img-reveal">
+          <div class="preview-card-overlay" aria-hidden="true"></div>
+          <div class="preview-card-num" aria-hidden="true">01</div>
+        </div>
+        <div class="preview-card-body">
+          <div class="preview-card-tag">Classica</div>
+          <div class="preview-card-name">Margherita</div>
+          <div class="preview-card-desc">San Marzano, fiordilatte di Agerola, basilico fresco, olio EVO</div>
+          <div class="preview-card-price">€ 6,00</div>
+        </div>
       </div>
     </article>
     <article class="preview-card reveal d2">
-      <div class="preview-card-img">
-        <img src="borghese.jpg" alt="Pizza Borghese con prosciutto crudo e rucola" loading="lazy">
-        <div class="preview-card-overlay" aria-hidden="true"></div>
-        <div class="preview-card-num" aria-hidden="true">02</div>
-      </div>
-      <div class="preview-card-body">
-        <div class="preview-card-tag">Specialità</div>
-        <div class="preview-card-name">Borghese</div>
-        <div class="preview-card-desc">Fiordilatte, prosciutto crudo 24 mesi, rucola, grana padano, noci</div>
-        <div class="preview-card-price">€ 10,00</div>
+      <div class="preview-card-inner">
+        <div class="preview-card-img">
+          <img src="img/borghese.jpg" alt="Pizza Borghese con prosciutto crudo e rucola" loading="lazy" class="img-reveal">
+          <div class="preview-card-overlay" aria-hidden="true"></div>
+          <div class="preview-card-num" aria-hidden="true">02</div>
+        </div>
+        <div class="preview-card-body">
+          <div class="preview-card-tag">Specialità</div>
+          <div class="preview-card-name">Borghese</div>
+          <div class="preview-card-desc">Fiordilatte, prosciutto crudo 24 mesi, rucola, grana padano, noci</div>
+          <div class="preview-card-price">€ 10,00</div>
+        </div>
       </div>
     </article>
     <article class="preview-card reveal d3">
-      <div class="preview-card-img">
-        <img src="bufala.jpg" alt="Pizza Bufala con mozzarella di bufala DOP" loading="lazy">
-        <div class="preview-card-overlay" aria-hidden="true"></div>
-        <div class="preview-card-num" aria-hidden="true">03</div>
-      </div>
-      <div class="preview-card-body">
-        <div class="preview-card-tag">Firma</div>
-        <div class="preview-card-name">Bufala</div>
-        <div class="preview-card-desc">Datterino, mozzarella di bufala DOP, basilico, olio aromatico</div>
-        <div class="preview-card-price">€ 13,00</div>
+      <div class="preview-card-inner">
+        <div class="preview-card-img">
+          <img src="img/bufala.jpg" alt="Pizza Bufala con mozzarella di bufala DOP" loading="lazy" class="img-reveal">
+          <div class="preview-card-overlay" aria-hidden="true"></div>
+          <div class="preview-card-num" aria-hidden="true">03</div>
+        </div>
+        <div class="preview-card-body">
+          <div class="preview-card-tag">Firma</div>
+          <div class="preview-card-name">Bufala</div>
+          <div class="preview-card-desc">Datterino, mozzarella di bufala DOP, basilico, olio aromatico</div>
+          <div class="preview-card-price">€ 13,00</div>
+        </div>
       </div>
     </article>
   </div>
@@ -199,13 +194,13 @@
 <section class="parallax-section parallax-reverse">
   <div class="parallax-text-col" data-word="LEGNA" style="background: var(--graphite);">
     <div class="parallax-text">
-      <h2 class="section-h2 reveal d2">Il forno che <em>non dorme</em><br>mai</h2>
-      <p class="section-body reveal d3">Il nostro forno a legna accende alle 6 di mattina e resta caldo fino all'ultima pizza della serata. A 450 gradi, ogni pizza cuoce in 90 secondi — abbastanza da creare il cornicione perfetto, abbastanza da conservare ogni sapore.</p>
-      <a href="prenotazioni.html" class="btn-primary reveal d4" style="margin-top:40px; display:inline-block;">Prenota la tua serata →</a>
+      <h2 class="section-h2 burn-reveal d2">Il forno che <em>non dorme</em><br>mai</h2>
+      <p class="section-body burn-reveal d3">Il nostro forno a legna accende alle 6 di mattina e resta caldo fino all'ultima pizza della serata. A 450 gradi, ogni pizza cuoce in 90 secondi — abbastanza da creare il cornicione perfetto, abbastanza da conservare ogni sapore.</p>
+      <a href="prenotazioni.html" class="btn-primary burn-reveal d4" style="margin-top:40px; display:inline-block;">Prenota la tua serata →</a>
     </div>
   </div>
   <div class="parallax-img-col">
-    <div class="parallax-img" id="pImg2" style="background-image:url('forno.jpg'); background-position: center 30%;" role="img" aria-label="Forno a legna acceso"></div>
+    <div class="parallax-img" id="pImg2" style="background-image:url('img/forno.jpg'); background-position: center 30%;" role="img" aria-label="Forno a legna acceso"></div>
   </div>
 </section>
 
@@ -240,6 +235,7 @@
     <span>© 2026 Forno Nero · Pizzeria d'Autore</span>
     <span class="footer-ornament" aria-hidden="true">✦</span>
     <span>Cagliari · Sardegna</span>
+    <span>Made by <a href="https://mockly.it" target="_blank" rel="noopener" style="color:var(--signal);text-decoration:none;">mockly</a></span>
   </div>
 </footer>
 

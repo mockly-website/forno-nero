@@ -13,18 +13,18 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>🔥</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="img/forno.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500&family=Italiana&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style-prenotazioni.css">
   <style>
-    :focus-visible {
-      outline: 2px solid var(--signal);
-      outline-offset: 2px;
-    }
+    .page-overlay { position:fixed; inset:0; background:#0a0a0a; z-index:9999; opacity:1; pointer-events:none; }
   </style>
 </head>
 <body>
 
+<div class="page-overlay" id="pageOverlay"></div>
+<a href="#main-content" class="skip-link">Salta al contenuto</a>
 <div id="cur"></div>
 
 <div class="mob-menu" id="mobMenu" role="dialog" aria-label="Menu di navigazione">
@@ -44,7 +44,7 @@
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="menu.html">Menu</a>
-    <a href="prenotazioni.html" class="active" aria-current="page">Prenota</a>
+    <a href="prenotazioni.html">Prenota</a>
     <a href="index.html#contatti">Contatti</a>
   </div>
   <button class="hamburger" id="ham" onclick="toggleMob()" aria-label="Apri menu" aria-expanded="false">
@@ -61,7 +61,7 @@
   </div>
 </section>
 
-<main class="booking-main">
+<main class="booking-main" id="main-content">
   <div class="booking-layout">
     
     <aside class="booking-info-col">
@@ -86,10 +86,10 @@
           <div class="bic-text">Cagliari, Sardegna</div>
         </div>
       </div>
-      <div class="booking-quote reveal">
-        <div class="bq-line" aria-hidden="true"></div>
-        <p>"Ogni tavolo è una storia che aspetta di essere vissuta."</p>
-      </div>
+    <div class="booking-quote burn-reveal">
+      <div class="bq-line" aria-hidden="true"></div>
+      <p>"La pizza è come il jazz: improvvisi con quello che hai, ma devi conoscere le regole."</p>
+    </div>
     </aside>
 
     <div class="booking-form-col">
@@ -235,6 +235,7 @@
     <span>© 2026 Forno Nero · Pizzeria d'Autore</span>
     <span class="footer-ornament" aria-hidden="true">✦</span>
     <span>Cagliari · Sardegna</span>
+    <span>Made by <a href="https://mockly.it" target="_blank" rel="noopener" style="color:var(--signal);text-decoration:none;">mockly</a></span>
   </div>
 </footer>
 
