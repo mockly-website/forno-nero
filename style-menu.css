@@ -116,6 +116,31 @@
   border: 1px solid;
   line-height: 1.4;
   transition: border-color .3s, color .3s;
+  position: relative;
+  cursor: help;
+}
+.diet-badge::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  font-family: var(--font-body);
+  font-size: .6rem;
+  font-weight: 400;
+  letter-spacing: .06em;
+  color: var(--white);
+  background: var(--void);
+  border: 1px solid rgba(232,184,109,.2);
+  padding: 4px 10px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s cubic-bezier(.16,1,.3,1), transform .25s cubic-bezier(.16,1,.3,1);
+}
+.diet-badge:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 .diet-badge.veg { border-color: rgba(100,200,100,.3); color: rgba(100,200,100,.7); }
 .diet-badge.spicy { border-color: rgba(255,80,50,.3); color: rgba(255,80,50,.7); }
@@ -145,7 +170,16 @@
 
 /* SEARCH HIDE */
 .pizza-row.hidden {
-  display: none;
+  opacity: 0;
+  transform: translateY(6px) scale(0.98);
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-bottom-width: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .search-empty {
@@ -242,7 +276,8 @@
 .feat-price {
   font-family: var(--font-display); font-size: 1.8rem;
   color: var(--signal); letter-spacing: .08em;
-  transition: transform .3s;
+  transition: transform .3s, filter .8s;
+  filter: brightness(calc(1 + var(--heat) * 0.15));
 }
 .menu-feat-info:hover .feat-price { transform: scale(1.05); }
 
@@ -263,11 +298,10 @@
   display: flex; align-items: flex-start; justify-content: space-between;
   gap: 20px; padding: 20px 30px;
   border-bottom: 1px solid rgba(232,184,109,.06);
-  transition: background .2s, transform .2s;
+  transition: background .2s, transform .2s, opacity .5s cubic-bezier(.16,1,.3,1), max-height .5s cubic-bezier(.16,1,.3,1), padding .4s cubic-bezier(.16,1,.3,1), margin .4s cubic-bezier(.16,1,.3,1), border .4s cubic-bezier(.16,1,.3,1);
   background: var(--void);
 }
 .pizza-row:hover { background: rgba(232,184,109,.03); transform: translateX(4px); }
-.pizza-row.hidden { display: none; }
 .pizza-info { flex: 1; }
 .pizza-name {
   font-family: var(--font-display);

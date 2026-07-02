@@ -352,7 +352,7 @@ if (!prefersReducedMotion) {
   const labels = { veg: 'Vegetariana', spicy: 'Piccante', fish: 'Pesce', chef: 'Chef\'s Pick', special: 'Pizza ripiena' };
   document.querySelectorAll('.diet-badge').forEach(b => {
     for (const [cls, label] of Object.entries(labels)) {
-      if (b.classList.contains(cls)) { b.title = label; break; }
+      if (b.classList.contains(cls)) { b.setAttribute('data-tip', label); break; }
     }
   });
 })();

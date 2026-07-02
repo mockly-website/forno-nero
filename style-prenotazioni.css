@@ -228,15 +228,40 @@
   border: 1px solid rgba(232,184,109,.1);
   color: var(--mist);
   font-family: var(--font-body); font-size: .9rem; font-weight: 300;
-  cursor: pointer; transition: all .25s; text-align: center;
+  cursor: pointer; text-align: center;
   border-radius: 0;
+  position: relative;
+  transition: border-color .35s cubic-bezier(.16,1,.3,1), color .35s, transform .35s cubic-bezier(.16,1,.3,1), background .35s;
+  overflow: hidden;
 }
-.time-slot:hover { border-color: rgba(232,184,109,.35); color: var(--white); transform: translateY(-2px); }
+.time-slot::before {
+  content: '';
+  position: absolute; inset: -1px;
+  background: linear-gradient(135deg, rgba(232,184,109,0) 0%, rgba(232,184,109,0.15) 50%, rgba(232,184,109,0) 100%);
+  opacity: 0;
+  transition: opacity .4s;
+  pointer-events: none;
+}
+.time-slot::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; right: 50%;
+  height: 1px;
+  background: var(--signal);
+  transition: left .3s cubic-bezier(.16,1,.3,1), right .3s cubic-bezier(.16,1,.3,1);
+  pointer-events: none;
+}
+.time-slot:hover::after { left: 20%; right: 20%; }
+.time-slot:hover { border-color: rgba(232,184,109,.5); color: var(--white); transform: translateY(-2px); }
+.time-slot:hover::before { opacity: 1; }
 .time-slot.selected {
   background: var(--signal); color: var(--void);
   border-color: var(--signal); font-weight: 500;
   transform: translateY(-2px);
+  box-shadow: 0 2px 20px rgba(232,184,109,.3);
 }
+.time-slot.selected::after { left: 10%; right: 10%; background: var(--void); }
+.time-slot.selected::before { opacity: 0; }
 
 /* COPERTI STEPPER */
 .coperti-stepper {
@@ -309,6 +334,30 @@
 }
 .btn-back:hover { color: var(--white); border-color: rgba(245,242,238,.25); }
 .booking-step .btn-next:only-child { width: 100%; }
+
+/* POST-BOOKING ACTIONS */
+.post-actions {
+  display: flex; gap: 8px; justify-content: center;
+  margin-top: 24px; flex-wrap: wrap;
+}
+.post-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px;
+  font-family: var(--font-body); font-size: .75rem; font-weight: 400;
+  letter-spacing: .12em; color: var(--ghost);
+  background: rgba(245,242,238,.03);
+  border: 1px solid rgba(232,184,109,.15);
+  cursor: pointer; text-decoration: none;
+  transition: all .3s cubic-bezier(.16,1,.3,1);
+}
+.post-btn:hover {
+  border-color: rgba(232,184,109,.4);
+  color: var(--white);
+  background: rgba(232,184,109,.06);
+  transform: translateY(-1px);
+}
+.post-btn-icon { font-size: .9rem; line-height: 1; }
+#addCalendarBtn { cursor: pointer; }
 
 /* SUCCESS STATE */
 .success-state {

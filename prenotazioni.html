@@ -59,8 +59,8 @@
   <div class="booking-hero-bg" role="img" aria-label="Forno a legna del Forno Nero"></div>
   <div class="booking-hero-vignette" aria-hidden="true"></div>
   <div class="booking-hero-content">
-    <h1 class="booking-hero-h1">Prenota la tua <em>serata</em></h1>
-    <p class="booking-hero-sub">Un tavolo al Forno Nero è un'esperienza che si costruisce con cura. I posti sono limitati per preservare la qualità del servizio.</p>
+    <h1 class="booking-hero-h1">Richiedi la tua <em>Esperienza</em></h1>
+    <p class="booking-hero-sub">Un tavolo al Forno Nero non si prenota: si desidera. I posti sono volutamente limitati per custodire l'intimità e la qualità di ogni serata.</p>
   </div>
 </section>
 
@@ -209,6 +209,16 @@
           <div class="success-title">Richiesta <em>inviata</em></div>
           <div class="success-summary" id="successSummary"></div>
           <p class="success-sub">Ti contatteremo entro 2 ore per confermare il tavolo al Forno Nero.</p>
+          <div class="post-actions">
+            <button class="post-btn" id="addCalendarBtn" type="button" aria-label="Aggiungi al Calendario">
+              <span class="post-btn-icon" aria-hidden="true">📅</span>
+              Aggiungi al Calendario
+            </button>
+            <a class="post-btn" id="whatsappLink" href="#" target="_blank" rel="noopener" aria-label="Contatta l'Atelier su WhatsApp">
+              <span class="post-btn-icon" aria-hidden="true">💬</span>
+              Contatta l'Atelier
+            </a>
+          </div>
           <a href="menu.html" class="btn-primary" style="margin-top:32px; display:inline-block;">Rivedi il menu →</a>
           <button class="btn-secondary" onclick="resetBooking()" style="margin-top:12px; cursor:pointer;" type="button">Nuova prenotazione</button>
         </div>
@@ -376,6 +386,23 @@ function submitBooking() {
     <div class="summary-row"><span>Coperti</span><strong>${coperti} ${coperti === 1 ? 'persona' : 'persone'}</strong></div>
     ${selectedOccasione ? `<div class="summary-row"><span>Occasione</span><strong>${selectedOccasione}</strong></div>` : ''}
   `;
+
+  /* GENERA LINK CALENDARIO */
+  const dateObj = new Date(data + 'T' + selectedOra + ':00');
+  const endObj = new Date(dateObj.getTime() + 2 * 60 * 60 * 1000);
+  const fmt = d => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  const calText = encodeURIComponent('Forno Nero — ' + nome);
+  const calDetails = encodeURIComponent('Prenotazione Forno Nero\n' + nome + ' · ' + coperti + ' ' + (coperti === 1 ? 'persona' : 'persone') + (selectedOccasione ? ' · ' + selectedOccasione : '') + '\n\nCagliari, Sardegna');
+  const calUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + calText + '&dates=' + fmt(dateObj) + '/' + fmt(endObj) + '&details=' + calDetails + '&location=Cagliari%2C%20Sardegna';
+  const calBtn = document.getElementById('addCalendarBtn');
+  if (calBtn) {
+    calBtn.onclick = () => { window.open(calUrl, '_blank'); };
+  }
+
+  /* GENERA LINK WHATSAPP */
+  const waMsg = encodeURIComponent('Prenotazione Forno Nero\n\nNome: ' + nome + '\nData: ' + dateFormatted + '\nOrario: ' + selectedOra + '\nCoperti: ' + coperti + (selectedOccasione ? '\nOccasione: ' + selectedOccasione : '') + '\n\nContatto richiesto per modifiche.');
+  const waLink = document.getElementById('whatsappLink');
+  if (waLink) waLink.href = 'https://wa.me/391234567891?text=' + waMsg;
 
   goToStep(3);
 }

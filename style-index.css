@@ -147,7 +147,8 @@
   color: var(--signal); line-height: 1; letter-spacing: .05em;
   margin-bottom: 6px;
   will-change: transform;
-  transition: transform .3s;
+  transition: transform .3s, filter .8s;
+  filter: brightness(calc(1 + var(--heat) * 0.1));
 }
 .hero-counter-item:hover .hero-counter-num {
   transform: scale(1.1);
@@ -283,7 +284,8 @@
 .preview-card-price {
   font-family: var(--font-display);
   font-size: 1.4rem; color: var(--signal); letter-spacing: .08em;
-  transition: transform .3s;
+  transition: transform .3s, filter .8s;
+  filter: brightness(calc(1 + var(--heat) * 0.15));
 }
 .preview-card:hover .preview-card-price {
   transform: scale(1.05);
