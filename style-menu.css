@@ -22,7 +22,7 @@
 }
 .menu-hero-eyebrow {
   font-family: var(--font-body);
-  font-size: .65rem; letter-spacing: .42em; text-transform: uppercase;
+  font-size: 0.8125rem; letter-spacing: .42em; text-transform: uppercase;
   color: var(--signal); margin-bottom: 18px;
   opacity: 0; animation: fadeUp .8s ease forwards 0.4s;
   font-weight: 500;
@@ -108,7 +108,7 @@
 .diet-badge {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: .45rem; font-weight: 500;
+  font-size: 0.8125rem; font-weight: 500;
   letter-spacing: .05em;
   padding: 1px 5px;
   margin-left: 6px;
@@ -126,7 +126,7 @@
   left: 50%;
   transform: translateX(-50%) translateY(4px);
   font-family: var(--font-body);
-  font-size: .6rem;
+  font-size: 0.8125rem;
   font-weight: 400;
   letter-spacing: .06em;
   color: var(--white);
@@ -153,7 +153,7 @@
 .feat-badge-chef {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: .48rem; letter-spacing: .12em;
+  font-size: 0.8125rem; letter-spacing: .12em;
   color: var(--signal);
   border: 1px solid rgba(232,184,109,.3);
   padding: 1px 7px;
@@ -247,7 +247,7 @@
   50% { opacity: .08; }
 }
 .feat-tag {
-  font-family: var(--font-body); font-size: .6rem;
+  font-family: var(--font-body); font-size: 0.8125rem;
   letter-spacing: .42em; color: var(--signal); text-transform: uppercase;
   margin-bottom: 16px; font-weight: 500;
 }
@@ -269,7 +269,7 @@
 }
 .feat-price-wrap { margin-top: auto; }
 .feat-price-label {
-  font-size: .55rem; letter-spacing: .38em; text-transform: uppercase;
+  font-size: 0.8125rem; letter-spacing: .38em; text-transform: uppercase;
   color: var(--ghost); margin-bottom: 4px; font-weight: 500;
   font-family: var(--font-body);
 }
@@ -321,7 +321,7 @@
 }
 .pizza-row:hover .pizza-price { transform: scale(1.08); }
 .pizza-tag {
-  font-family: var(--font-body); font-size: .5rem;
+  font-family: var(--font-body); font-size: 0.8125rem;
   letter-spacing: .15em; color: var(--signal); text-transform: uppercase;
   border: 1px solid rgba(232,184,109,.35); padding: 2px 7px;
   margin-left: 8px; vertical-align: middle; font-weight: 500;
@@ -373,7 +373,7 @@
 }
 .spec-card-body { padding: 24px 28px 36px; }
 .spec-card-tag {
-  font-family: var(--font-body); font-size: .58rem;
+  font-family: var(--font-body); font-size: 0.8125rem;
   letter-spacing: .38em; color: var(--signal); text-transform: uppercase;
   margin-bottom: 8px; font-weight: 500;
 }
@@ -444,7 +444,7 @@
   .feat-name { font-size: clamp(2rem, 8vw, 3.5rem); }
 }
 @media (max-width: 480px) {
-  .menu-tab { font-size: .75rem; padding: 16px 18px; letter-spacing: .16em; }
+  .menu-tab { font-size: 0.8125rem; padding: 16px 18px; letter-spacing: .16em; }
   .menu-hero { min-height: 260px; height: 40vh; }
   .menu-hero-h1 { font-size: clamp(2.8rem, 14vw, 5rem); }
   .menu-hero-content { padding: 30px 5vw 5vh; }
@@ -452,13 +452,13 @@
   .pizza-grid::before { display: none; }
   .pizza-row { padding: 14px 0; gap: 12px; }
   .pizza-name { font-size: 1rem; letter-spacing: .04em; }
-  .pizza-desc { font-size: .78rem; }
+  .pizza-desc { font-size: 0.8125rem; }
   .pizza-price { font-size: .95rem; }
-  .diet-badge { font-size: .4rem; padding: 1px 4px; margin-left: 4px; }
-  .feat-badge-chef { font-size: .42rem; margin-left: 6px; padding: 1px 5px; }
+  .diet-badge { font-size: 0.8125rem; padding: 1px 4px; margin-left: 4px; }
+  .feat-badge-chef { font-size: 0.8125rem; margin-left: 6px; padding: 1px 5px; }
   .menu-feat-info { padding: 28px 20px; }
   .menu-feat-info::before { font-size: 7rem; }
   .feat-desc { font-size: .85rem; margin-bottom: 24px; }
-  .menu-allergeni { padding: 18px 20px; font-size: .75rem; }
+  .menu-allergeni { padding: 18px 20px; font-size: 0.8125rem; }
   .menu-booking-cta { padding: 48px 20px; }
 }

@@ -65,7 +65,7 @@
 
 .hero-eyebrow {
   font-family: var(--font-body);
-  font-size: .7rem; letter-spacing: .42em; text-transform: uppercase;
+  font-size: 0.8125rem; letter-spacing: .42em; text-transform: uppercase;
   color: var(--signal); margin-bottom: 44px;
   opacity: 0; animation: fadeUp .8s ease forwards 2.2s;
   display: flex; align-items: center; gap: 0;
@@ -156,7 +156,7 @@
 
 .hero-counter-label {
   font-family: var(--font-body);
-  font-size: .62rem; letter-spacing: .3em; text-transform: uppercase;
+  font-size: 0.8125rem; letter-spacing: .3em; text-transform: uppercase;
   color: var(--ghost); font-weight: 500;
   white-space: nowrap;
 }
@@ -199,7 +199,7 @@
 
 .stat-label {
   font-family: var(--font-body);
-  font-size: .6rem; letter-spacing: .28em; text-transform: uppercase;
+  font-size: 0.8125rem; letter-spacing: .28em; text-transform: uppercase;
   color: var(--ghost); line-height: 1.5; font-weight: 500;
 }
 
@@ -270,7 +270,7 @@
 }
 .preview-card-tag {
   font-family: var(--font-body);
-  font-size: .58rem; letter-spacing: .38em; text-transform: uppercase;
+  font-size: 0.8125rem; letter-spacing: .38em; text-transform: uppercase;
   color: var(--signal); margin-bottom: 8px; font-weight: 500;
 }
 .preview-card-name {
@@ -311,7 +311,7 @@
   .hero-cta-row { flex-direction: column; align-items: flex-start; gap: 12px; }
   .hero-counter { padding: 0 6vw 6vh; gap: 0; }
   .hero-counter-item { padding: 20px 0; }
-  .hero-counter-label { font-size: .55rem; letter-spacing: .2em; }
+  .hero-counter-label { font-size: 0.8125rem; letter-spacing: .2em; }
   .hero-counter-divider { margin: 0 16px; }
   .stats-strip { padding: 48px 6vw; }
   .stat-item { min-width: 50%; padding: 20px 16px; }

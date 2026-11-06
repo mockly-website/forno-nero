@@ -1,0 +1,42 @@
+/* Ritocchi di leggibilità (revisione Mockly, novembre 2026).
+   Caricato per ultimo su ogni pagina: alza i testi troppo piccoli,
+   schiarisce i grigi troppo tenui e allarga i punti da toccare. */
+:root {
+  --mist:  rgba(245,242,238,0.78);
+  --ghost: rgba(245,242,238,0.55);
+}
+
+/* Bottone del menu: niente sfondo bianco del browser, area da 44px */
+.hamburger {
+  background: none; border: 0; color: inherit;
+  min-width: 44px; min-height: 44px;
+  align-items: center; justify-content: center;
+}
+
+/* Etichette piccole: almeno 12-13px e più chiare */
+.stat-label, .hero-counter-label, .preview-card-tag, .bic-title,
+.feat-tag, .feat-price-label, .menu-hero-eyebrow, .section-label,
+.step-label, .stepper-label, .field-label, .footer-col h4 {
+  font-size: max(0.78rem, 12.5px) !important;
+  color: rgba(245,242,238,0.8);
+}
+.step.active .step-label { color: var(--signal); }
+.feat-badge-chef, .diet-badge { font-size: 0.75rem !important; }
+.diet-badge.special { color: rgba(245,242,238,0.75); }
+.footer-credit, .footer-credit a, .footer-bottom span { font-size: 0.8rem !important; }
+.footer-col a, .footer-col-text { display: block; padding-block: 0.6rem; margin-bottom: 0 !important; font-size: 0.95rem; }
+.footer-col-text { color: var(--mist); }
+.hero-counter-item { padding-inline: 10px; }
+.hero-counter-label { letter-spacing: .14em !important; }
+.footer-sub, .preview-card-desc, .bic-text, .pizza-desc { font-size: 0.95rem; }
+.menu-tabs button, [id^="tab-btn-"] { font-size: 0.9rem; min-height: 44px; }
+input, select, textarea { font-size: 16px !important; }
+
+/* Bottoni dell'hero: testo leggibile su telefono */
+@media (max-width: 760px) {
+  .btn-primary, .btn-secondary, .btn-next { font-size: 0.95rem !important; padding: 15px 24px !important; letter-spacing: .1em !important; }
+  .hero-h1 { font-size: clamp(2.6rem, 11.5vw, 5rem) !important; }
+  .marquee-item { font-size: 0.85rem !important; }
+  .nav-brand { padding-block: 10px; }
+  .mob-menu a { padding-block: 0.4rem; }
+}
