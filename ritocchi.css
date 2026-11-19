@@ -17,13 +17,13 @@
 .stat-label, .hero-counter-label, .preview-card-tag, .bic-title,
 .feat-tag, .feat-price-label, .menu-hero-eyebrow, .section-label,
 .step-label, .stepper-label, .field-label, .footer-col h4 {
-  font-size: max(0.78rem, 12.5px) !important;
+  font-size: 0.875rem !important;
   color: rgba(245,242,238,0.8);
 }
 .step.active .step-label { color: var(--signal); }
-.feat-badge-chef, .diet-badge { font-size: 0.75rem !important; }
+.feat-badge-chef, .diet-badge { font-size: 0.8125rem !important; }
 .diet-badge.special { color: rgba(245,242,238,0.75); }
-.footer-credit, .footer-credit a, .footer-bottom span { font-size: 0.8rem !important; }
+.footer-credit, .footer-credit a, .footer-bottom span { font-size: 0.875rem !important; }
 .footer-col a, .footer-col-text { display: block; padding-block: 0.6rem; margin-bottom: 0 !important; font-size: 0.95rem; }
 .footer-col-text { color: var(--mist); }
 .hero-counter-item { padding-inline: 10px; }
@@ -40,3 +40,10 @@ input, select, textarea { font-size: 16px !important; }
   .nav-brand { padding-block: 10px; }
   .mob-menu a { padding-block: 0.4rem; }
 }
+
+/* Revisione 19/11/2026 (Noah): il titolo della prima schermata aveva sotto
+   un alone scuro (ombra larga, tagliata dalle righe che si alzano).
+   Ombra leggera e vicina alle lettere; il contrasto lo dà la sfumatura dietro. */
+.hero-h1 { text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35); }
+.h1-line { padding-bottom: 0.18em; margin-bottom: -0.18em; }
+.hero-sub { text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4); }
